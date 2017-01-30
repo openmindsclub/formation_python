@@ -1,0 +1,16 @@
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.xml
+*.gz
+*.toc
+images/example*
+images/msf_example.jpg
+*.sublime-*
