@@ -18,12 +18,13 @@
 \usepackage{subcaption}
 
 \usepackage{listings}
-\lstset{
-language=C++,                   
+
+\lstdefinestyle{code}{
+language=python,                   
 keywordstyle=\color{blue},      
 stringstyle=\color{red},        
 commentstyle=\color{green},     
-basicstyle=\ttfamily,           
+basicstyle=\small\ttfamily,           
 numbers=left,                   
 numberstyle=\normalsize,        
 numbersep=7pt,                  
@@ -32,6 +33,25 @@ breaklines=true,
 frame=leftline,                 
 framerule=2pt,
 }
+
+\lstdefinestyle{exec_result}{
+frame=tb,
+language=Java,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{gray},
+keywordstyle=\color{blue},
+commentstyle=\color{red},
+stringstyle=\color{green},
+breaklines=true,
+breakatwhitespace=true,
+framerule=2pt,
+}
+
 
 \begin{document}
 \pagenumbering{gobble}
@@ -82,7 +102,7 @@ framerule=2pt,
         \subsubsection{Comment sont crée ces programmes ??}
             L'ordinateur est une machine bête et discipliné qui ne comprend qu'un seul langage, qui est le langage
             \emph{binaire}. Ce langage est une succession de 1 et de 0 comme suit : 
-            \begin{lstlisting}[numbers=none]
+            \begin{lstlisting}[style=code,numbers=none]
 01101100001100110011000111101011101
             \end{lstlisting}
             
@@ -172,9 +192,42 @@ framerule=2pt,
             %     seulement (pour que les anciens programmes écrit en python 2.x continue à fonctionner sans problème).
 
     \subsection{Les logiciels nécessaires pour la programmation}
+        Pour pouvoir créer des programmes en python, il existe deux manières :
+        \begin{enumerate}
+            \item Soit on écrit nos instructions dans un fichier texte, et puis on appel l'interpréteur python pour
+                qu'il exécute nos instructions et nous affiche le résultat. Cette méthode comporte de nombreux
+                avantages, et elle très flexible, mais elle est compliqué (surtout pour les débutants). Donc nous 
+                allons optez pour la deuxième méthode dans cette formation.
+            \item Cette méthode consiste à utiliser un programme appelé \emph{IDE} (Integrated Development Environment),
+                ou \emph{EDI} en français (Environnement de Développement Intégré). Ce programme contient tous ce dont 
+                on a besoin pour créer nos programmes : une partie ou on peut écrire nos instructions, des boutons
+                pour demander à python d'exécuter nos instructions, et finalement une partie ou le résultat de 
+                l'exécution est affiché.
+        \end{enumerate}
+
+        L'IDE qu'on va utiliser est appelé \emph{PyCharm} (\autoref{pycharm}). C'est un IDE \emph{Open Source} et très 
+        puissant.
+        
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{img/8_pycharm.png}
+            \caption{Pycharm}
+            \label{pycharm}
+        \end{figure}
+
+        PyCharm est composé essentiellement de 4 partie :
+        \begin{description}
+            \item[La zone principale (1):] c'est dans cette zone où on écrira nos instructions (code).
+            \item[La liste des fichiers du projet (2):] dans cette zone on peu voir tous les fichiers de notre projet. 
+                On voit bien que le projet présenté dans la \autoref{pycharm} contient un seul fichier seulement.
+            \item[La zone d'affichage (3):] c'est cette zone qui nous affichera le résultat d'exécution de notre 
+                programme, où les éventuelles erreurs s'il y en a.
+            \item[La barre d'outils (4):] elle contient de nombreux boutons qui font différentes choses : exécuter 
+            le projet, configurer l'IDE \ldots\ etc, mais nous on utilisera que quelques boutons.
+        \end{description}
 
 
-    \subsection{Hello World}
+
     \subsection{Les variables}
         Affichage, lecture des variables.
     \subsection{les opérateurs arithmétique}
