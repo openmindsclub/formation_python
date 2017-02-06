@@ -36,7 +36,7 @@ framerule=2pt,
 
 \lstdefinestyle{exec_result}{
 frame=tb,
-language=Java,
+language=bash,
 aboveskip=3mm,
 belowskip=3mm,
 showstringspaces=false,
@@ -44,9 +44,6 @@ columns=flexible,
 basicstyle={\small\ttfamily},
 numbers=none,
 numberstyle=\tiny\color{gray},
-keywordstyle=\color{blue},
-commentstyle=\color{red},
-stringstyle=\color{green},
 breaklines=true,
 breakatwhitespace=true,
 framerule=2pt,
@@ -65,8 +62,11 @@ framerule=2pt,
     \subsection{Introduction}
         Ceci est une petite introduction où on va parler des programmes et des langages de programmations.
         \subsubsection{C'est quoi un programme ??}
-            C'est un ensemble d'instructions exécuté par l'ordinateur pour qu'il puisse 
-            accomplir une tâche bien précise. On a pour exemple des programmes les navigateurs web 
+            Je vais commencer par donner une définition qui peut vous semblez un peu floue, mais cette description
+            va s'éclaircir coûte que coûte au cours de notre formation. 
+
+            Alors, un programme est un ensemble d'instructions exécuté par l'ordinateur pour qu'il puisse (l'ordinateur)
+            accomplir une tâche bien précise. On a pour exemple des programmes : les navigateurs web 
             (comme chromium, chrome, firefox), qui permettent de visiter les cites et de chatter en ligne ;
             on a aussi les jeux vidéos, les logiciels de retouches de photos \ldots\ etc
 
@@ -118,6 +118,23 @@ framerule=2pt,
                 \item L'ordinateur peut alors lire le binaire et faire ce qu'on l'a demandé.
             \end{itemize}
 
+            Voici une image qui illustre ce qu'on vient de dire :
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/11_compilation.png}
+                \caption{Les étapes de création d'un programme}
+            \end{figure}
+
+            Une remarque très importante : les instructions que nous écrivons dans un langage de programmation 
+            sont appelé \textbf{Code Source}. Gardez bien ce terme à l'esprit, parce qu'on va beaucoup l'utiliser 
+            par la suite. Voici un exemple de code source python que nous écrirons plus tard :
+            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/12_code.png}
+                \caption{Coude source Python}
+            \end{figure}
+
         \subsubsection{Les langages de programmation les plus connus}
             \begin{description}
                 \item[C++ :] La formation est faite par \textsc{Yasser}.
@@ -157,7 +174,7 @@ framerule=2pt,
                     l'ordinateur.
                 \item[Interprétation :] Avec cette technique, on ne traduit pas tous les instructions en binaires, mais
                     on va plutôt traduire une instruction par instruction à chaque fois qu'on veut exécuter 
-                    notre programme. Par exemple, si mon code contient 3 instructions, quand je veux l'exécuter je
+                    notre programme. Par exemple, si mon code source contient 3 instructions, quand je veux l'exécuter je
                     traduit la première instruction en binaire, et je la passe à l'ordinateur pour qu'il l'exécute ;
                     ensuite je traduit la deuxième instructions, et je la passe à l'ordinateur pour qu'il l'exécute
                     \ldots\ et ainsi de suite jusqu'à la traduction de toute
@@ -217,7 +234,7 @@ framerule=2pt,
 
         PyCharm est composé essentiellement de 4 partie :
         \begin{description}
-            \item[La zone principale (1):] c'est dans cette zone où on écrira nos instructions (code).
+            \item[La zone principale (1):] c'est dans cette zone où on écrira notre code source (nos instructions).
             \item[La liste des fichiers du projet (2):] dans cette zone on peu voir tous les fichiers de notre projet. 
                 On voit bien que le projet présenté dans la \autoref{pycharm} contient un seul fichier seulement.
             \item[La zone d'affichage (3):] c'est cette zone qui nous affichera le résultat d'exécution de notre 
@@ -226,7 +243,125 @@ framerule=2pt,
             le projet, configurer l'IDE \ldots\ etc, mais nous on utilisera que quelques boutons.
         \end{description}
 
+    \subsection{Hello World}
+        Nous allons écrire maintenant notre premier programme. Un programme petit et simple pour comprendre le 
+        fonctionnement de ce langage fascinant.
 
+        On commence par créer un nouveau projet en cliquant sur la barre d'outils sur \verb|File -> New Project|. Ensuite on choisis où on veut placer notre projet, et la version de l'interpréteur qu'on veut utiliser
+        (\autoref{pycharm_new_project}). Choisissez n'importe quelle version 3.x disponible sur votre ordinateur
+        (Pour moi, j'utilise la version 3.5).
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{img/9_new_project.png}
+            \caption{Création d'un nouveau projet}
+            \label{pycharm_new_project}
+        \end{figure}
+
+        On a crée notre projet, mais ce dernier est vide, il ne contient aucun fichier. Nous allons maintenant ajouter
+        un fichier où nous allons écrire nos instructions (programmes). On fait un clique sur la barre d'outils sur
+        \verb|File -> New| et on choisit \verb|Python File|. On lui donne un nom à notre fichier, et on clique sur 
+        \verb|OK| (\autoref{new_file}).
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\linewidth]{img/10_new_file.png}
+            \caption{Création d'un fichier pour écrire les instructions}
+            \label{new_file}
+        \end{figure}
+
+        Doré avant, je vais seulement vous affiché les codes que vous devez écrire dans la zone principale (la zone 
+        \textbf{1}, \autoref{pycharm}).
+
+        On arrive maintenant à la programmation, voici votre premier programme :
+        \begin{lstlisting}[style=code]
+print("Hello World!")
+        \end{lstlisting}
+
+        Écrivez ce code source dans la zone principale (zone \no1 \autoref{pycharm}), et demandez à PyCharm 
+        d'exécuter notre programme en cliquant sur la barre d'outils sur \verb|Run -> Run|, et on choisit le fichier
+        à exécuter (on en a un seul dans notre cas). Voici le résultat de l'exécution :
+
+        \begin{lstlisting}[style=exec_result]
+/usr/bin/python3.5 /home/no_one/PycharmProjects/hello_world/program.py
+Hello World!
+
+Process finished with exit code 0
+        \end{lstlisting}
+
+        Alors, la ligne que nous avons écrit dans l'IDE \verb|print("Hello World!")| est une instruction qui demande
+        à l'ordinateur d'afficher \verb|Hello World!| à l'écran. Nous pouvons écrire n'importe quoi à la place de 
+        \verb|Hello World!| et l'ordinateur se chargera d'afficher le message que nous avons demandé. 
+        
+        Avant de continuer, nous allons détaillé ce que \verb|PyCharm| nous a affiché :
+        \begin{description}
+            \item[/usr/bin/python3.5] c'est le chemin vers l'interpréteur python que PyCharm a utilisé pour 
+                exécuté notre programme. La majorité des programmes sous \emph{Linux} sont installés dans le dossier 
+                \verb|/usr/bin/|\ .
+            \item[/home/no\_one/PycharmProjects/hello\_world/program.py] ça c'est notre fichier (là où on est entrain 
+                d'écrire notre code source). Donc d'après cette ligne, on comprend que \verb|python3.5| est entrain
+                d'exécuter ce fichier.
+            \item[Hello World!] c'est le message que nous avons demandé à python d'affiché (on voit qu'il a bien 
+                obéi).
+            \item[Process finished with exit code 0] ceci est un message affiché par \verb|PyCharm| pour nous indiquer
+                que notre programme s'est terminé avec succès.  
+        \end{description}
+
+        Donc, \verb|print()| est l'instruction responsable d'afficher un message à l'écran. On lui donne entre 
+        les \verb|""| le message qu'on veut afficher.
+        Essayez de Remplacer \verb|Hello World!| par \verb|Salut tout le monde| et ré-exécuté pour voir le nouveau résultat. 
+
+        \subsubsection{Les commentaires}
+            Avant de terminer cette section avec un TP, nous allons parler des commentaires. 
+            Dans n'importe quel langage de programmation (y compris python), on a la possibilité d'écrire des commentaires.
+
+            Alors c'est quoi les commentaires ? Ce sont des bouts de textes qu'on écrit dans notre code source et qui
+            permettrons d'expliquer le fonctionnement de notre code source. Ça peut vous semblez bizarre et inutile, mais
+            sachez que c'est très commun qu'on revient à notre programme après quelques semaines pour l'améliorer 
+            ou pour le modifier, et sans les commentaires on sera obligé de tout repenser du début. Ne vous faites pas 
+            avoir par le fait que c'est vous qui a crée ce programme, car même si vous comprenez tous sur votre
+            programme maintenant, vous oublierai après un certain temps.
+
+            Les commentaires ne serviront pas seulement à comprendre son code seulement, mais c'est très utile aussi
+            quand vous travaillez en groupe pour crée un programme. Quand vous utilisez les commentaires, vous ne serrez
+            pas obligé d'expliquer la partie que vous avez écrit à vos camarades.
+            
+            J'insiste exprès sur le fait d'utiliser les commentaires, ils sont très très utiles et indispensables.
+
+            Alors, on sait ce que sont les commentaires, mais comment les utiliser avec \verb|python| ? Voici 
+            un exemple sans plus tardé :
+            \begin{lstlisting}[style=code]
+# Cette instructions affiche Hello World! a l'ecran.
+print("Hello World!") 
+            \end{lstlisting}
+
+            Les commentaires commence par un `\verb|#|', tous ce qui suit ce caractère est ignoré par \verb|python|.
+            Donc on peut écrire autant de ligne de commentaire qu'on veut, il faut juste précédé chaque ligne avec un
+            `\verb|#|'.
+
+        \subsubsection{Mini TP}
+            Bon, on a assez bavardé, vous allez écrire votre vrai premier programme crée par vous même.
+            Voici le TP :
+            \begin{itemize}
+                \item Créez un nouveau projet et surnommé le ``Super projet 1''.
+                \item Créez un fichier dans ce projet où nous allons mettre notre code source. surnommé ce fichier
+                    ``main''.
+                \item Débrouillez vous pour que le programme affiche :
+                    \begin{lstlisting}[style=exec_result, breaklines=false]
+Salut tout le monde.
+On est dans une formation python, et on va cree des programmes super cool :D.
+                    \end{lstlisting}
+                \item N'oubliez pas d'utiliser les commentaires pour expliquer votre code.
+            \end{itemize}
+
+        \subsubsection{Solution du TP}
+            \begin{lstlisting}[style=code, breaklines=false]
+# Ces deux instructions affiche des messages a l'ecran.
+print("Salut tout le monde.")
+print("On est dans une formation python, et on va cree des programmes super cool :D.")
+            \end{lstlisting}
+
+    
 
     \subsection{Les variables}
         Affichage, lecture des variables.
