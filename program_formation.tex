@@ -17,13 +17,18 @@
 \usepackage{float}
 \usepackage{subcaption}
 
+% To write inline code.
+\usepackage{xcolor}
+\definecolor{light-gray}{gray}{0.90}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
 \usepackage{listings}
 
 \lstdefinestyle{code}{
 language=python,                   
 keywordstyle=\color{blue},      
 stringstyle=\color{red},        
-commentstyle=\color{green},     
+commentstyle=\color{gray},     
 basicstyle=\small\ttfamily,           
 numbers=left,                   
 numberstyle=\normalsize,        
@@ -185,8 +190,8 @@ framerule=2pt,
             \end{description}
 
         \subsubsection{Le langage Python}
-            Python est un langage de programmation interprété, facile à apprendre, et très pratique. On cite quelques
-            avantages de ce langage :
+            Python est un langage de programmation interprété, \emph{Open Source}, facile à apprendre, 
+            et très pratique. On cite quelques avantages de ce langage :
             \begin{itemize}
                 \item Python est facile à apprendre et son code est facile à lire.
                 \item Il multiplate-forme, il marche sous Linux, Windows, et Mac OS.
@@ -247,7 +252,7 @@ framerule=2pt,
         Nous allons écrire maintenant notre premier programme. Un programme petit et simple pour comprendre le 
         fonctionnement de ce langage fascinant.
 
-        On commence par créer un nouveau projet en cliquant sur la barre d'outils sur \verb|File -> New Project|. Ensuite on choisis où on veut placer notre projet, et la version de l'interpréteur qu'on veut utiliser
+        On commence par créer un nouveau projet en cliquant sur la barre d'outils sur \code{File -> New Project}. Ensuite on choisis où on veut placer notre projet, et la version de l'interpréteur qu'on veut utiliser
         (\autoref{pycharm_new_project}). Choisissez n'importe quelle version 3.x disponible sur votre ordinateur
         (Pour moi, j'utilise la version 3.5).
 
@@ -260,8 +265,8 @@ framerule=2pt,
 
         On a crée notre projet, mais ce dernier est vide, il ne contient aucun fichier. Nous allons maintenant ajouter
         un fichier où nous allons écrire nos instructions (programmes). On fait un clique sur la barre d'outils sur
-        \verb|File -> New| et on choisit \verb|Python File|. On lui donne un nom à notre fichier, et on clique sur 
-        \verb|OK| (\autoref{new_file}).
+        \code{File -> New} et on choisit \code{Python File}. On lui donne un nom à notre fichier, et on clique sur 
+        \code{OK} (\autoref{new_file}).
 
         \begin{figure}[H]
             \centering
@@ -279,7 +284,7 @@ print("Hello World!")
         \end{lstlisting}
 
         Écrivez ce code source dans la zone principale (zone \no1 \autoref{pycharm}), et demandez à PyCharm 
-        d'exécuter notre programme en cliquant sur la barre d'outils sur \verb|Run -> Run|, et on choisit le fichier
+        d'exécuter notre programme en cliquant sur la barre d'outils sur \code{Run -> Run}, et on choisit le fichier
         à exécuter (on en a un seul dans notre cas). Voici le résultat de l'exécution :
 
         \begin{lstlisting}[style=exec_result]
@@ -289,27 +294,27 @@ Hello World!
 Process finished with exit code 0
         \end{lstlisting}
 
-        Alors, la ligne que nous avons écrit dans l'IDE \verb|print("Hello World!")| est une instruction qui demande
-        à l'ordinateur d'afficher \verb|Hello World!| à l'écran. Nous pouvons écrire n'importe quoi à la place de 
-        \verb|Hello World!| et l'ordinateur se chargera d'afficher le message que nous avons demandé. 
+        Alors, la ligne que nous avons écrit dans l'IDE \code{print("Hello World!")} est une instruction qui demande
+        à l'ordinateur d'afficher \code{Hello World!} à l'écran. Nous pouvons écrire n'importe quoi à la place de 
+        \code{Hello World!} et l'ordinateur se chargera d'afficher le message que nous avons demandé. 
         
-        Avant de continuer, nous allons détaillé ce que \verb|PyCharm| nous a affiché :
+        Avant de continuer, nous allons détaillé ce que PyCharm nous a affiché :
         \begin{description}
             \item[/usr/bin/python3.5] c'est le chemin vers l'interpréteur python que PyCharm a utilisé pour 
                 exécuté notre programme. La majorité des programmes sous \emph{Linux} sont installés dans le dossier 
-                \verb|/usr/bin/|\ .
+                \code{/usr/bin/}\ .
             \item[/home/no\_one/PycharmProjects/hello\_world/program.py] ça c'est notre fichier (là où on est entrain 
-                d'écrire notre code source). Donc d'après cette ligne, on comprend que \verb|python3.5| est entrain
+                d'écrire notre code source). Donc d'après cette ligne, on comprend que \code{python3.5} est entrain
                 d'exécuter ce fichier.
             \item[Hello World!] c'est le message que nous avons demandé à python d'affiché (on voit qu'il a bien 
                 obéi).
-            \item[Process finished with exit code 0] ceci est un message affiché par \verb|PyCharm| pour nous indiquer
+            \item[Process finished with exit code 0] ceci est un message affiché par \code{PyCharm} pour nous indiquer
                 que notre programme s'est terminé avec succès.  
         \end{description}
 
-        Donc, \verb|print()| est l'instruction responsable d'afficher un message à l'écran. On lui donne entre 
-        les \verb|""| le message qu'on veut afficher.
-        Essayez de Remplacer \verb|Hello World!| par \verb|Salut tout le monde| et ré-exécuté pour voir le nouveau résultat. 
+        Donc, \code{print()} est l'instruction responsable d'afficher un message à l'écran. On lui donne entre 
+        les \code{""} le message qu'on veut afficher.
+        Essayez de Remplacer \code{Hello World!} par \code{Salut tout le monde} et ré-exécuté pour voir le nouveau résultat. 
 
         \subsubsection{Les commentaires}
             Avant de terminer cette section avec un TP, nous allons parler des commentaires. 
@@ -328,22 +333,22 @@ Process finished with exit code 0
             
             J'insiste exprès sur le fait d'utiliser les commentaires, ils sont très très utiles et indispensables.
 
-            Alors, on sait ce que sont les commentaires, mais comment les utiliser avec \verb|python| ? Voici 
+            Alors, on sait ce que sont les commentaires, mais comment les utiliser avec \code{python} ? Voici 
             un exemple sans plus tardé :
             \begin{lstlisting}[style=code]
 # Cette instructions affiche Hello World! a l'ecran.
 print("Hello World!") 
             \end{lstlisting}
 
-            Les commentaires commence par un `\verb|#|', tous ce qui suit ce caractère est ignoré par \verb|python|.
+            Les commentaires commence par un \code{\#}, tous ce qui suit ce caractère est ignoré par \code{python}.
             Donc on peut écrire autant de ligne de commentaire qu'on veut, il faut juste précédé chaque ligne avec un
-            `\verb|#|'.
+            \code{\#}.
 
-        \subsubsection{Mini TP}
+        \subsubsection{Exercice 1}
             Bon, on a assez bavardé, vous allez écrire votre vrai premier programme crée par vous même.
-            Voici le TP :
+            Voici l'exercice :
             \begin{itemize}
-                \item Créez un nouveau projet et surnommé le ``Super projet 1''.
+                \item Créez un nouveau projet et surnommé le ``exercice 1''.
                 \item Créez un fichier dans ce projet où nous allons mettre notre code source. surnommé ce fichier
                     ``main''.
                 \item Débrouillez vous pour que le programme affiche :
@@ -361,10 +366,150 @@ print("Salut tout le monde.")
 print("On est dans une formation python, et on va cree des programmes super cool :D.")
             \end{lstlisting}
 
-    
+\clearpage
 
     \subsection{Les variables}
-        Affichage, lecture des variables.
+        Les variables sont une notion fondamentale en informatique et il sont utilisé dans tous les langages
+        de programmation sans exception. Il ont plusieurs définitions, mais je pense que celle qu'on va voir est la plus simple.
+
+        En faite, votre ordinateur est une armoire géante qui contient des millions et des millions de tiroirs, et
+        chaque tiroir 
+        est utilisé pour stocker des informations. Donc quand vous voulez stocké une information (disons votre age) 
+        pour l'utilisé plus tard dans votre programme, vous demandez à votre ordinateur de vous allouer un tiroir. 
+        Ce tiroir vous serra allouer jusqu'à la fin de votre programme.
+
+        \colorbox{red}{Photos ici avec un tiroir avec la valeur 20 dedans}
+
+        Ce tiroir est le votre, vous pouvez placez des information dedans, les consulter, les retirer.
+
+
+        Donc, où sont les variables dans tous ça ?? Les variables sont des noms qu'on associé aux tiroirs que nous 
+        avons demandé. Donc, dans l'exemple précédent, nous avons utilisé un tiroir pour stocker un age, donc nous 
+        allons nommé ce tiroir \code{age}. Et à chaque fois qu'on veut consulter ou modifier le contenu de ce tiroir, 
+        (supposons vous avez oublié votre age) on utilise le mot \code{age}.
+
+        \colorbox{red}{Photos ici avec un tiroir avec une étiquette age collé sur, et la valeur 20 dedans}
+
+        \subsubsection{Créer et utiliser les variables avec python}
+            Pour créer une variable avec python, rien de plus simple. Il suffit d'écrire le nom de notre variable :
+            \begin{lstlisting}[style=code]
+age = 20 
+            \end{lstlisting}
+
+            Avec cette instruction, nous avons maintenant un tiroir réservé à nous, ce tiroir est accessible en
+            écrivant le mot \code{age} dans python. 
+
+            Si on veut voir le contenu de notre tiroir (variable), on peut utiliser 
+            l'instruction qu'on a vu précédemment \code{print()} (celle qui permet d'afficher à l'écran) :
+            \begin{lstlisting}[style=code]
+age = 20
+# Cette instruction va afficher mon age.
+print(age) 
+            \end{lstlisting}
+
+            On peut même modifier le contenu de notre variable à n'importe quel moment :
+            \begin{lstlisting}[style=code]
+age = 20
+# Cette instruction va afficher mon age.
+print(age) 
+
+# Ces deux instructions vont me rendre plus vieux, 
+# et afficher mon nouveau age.
+age = 30
+print(age)
+            \end{lstlisting}
+
+            Voici ce qui nous serra affiché par PyCharm après l'exécution de notre programme :
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/15_affiche_variables.png}
+                \caption{Affichage de la variable age}
+            \end{figure}
+
+        \subsubsection{Quel genre d'information on peut stocker dans nos variable}
+            Il existe essentiellement 3 types d'information qu'on peut stocker dans les variables :
+            \begin{description}
+                \item[Les entiers :] comme ce que nous avons stocké dans la variable \code{age} que nous avons 
+                    utilisé jusque là. Les entiers sont appelé \code{int} en python.
+                \item[Les valeurs décimales :] des nombres à virgules, (comme : 3.453). Ces nombres sont appelé 
+                    \code{float} en python. Exemple :
+                    \begin{lstlisting}[style=code]
+pi = 3.14
+                    \end{lstlisting}
+                \item[Du texte :] on les appels les chaînes de caractères ou \code{string} en python. On les définit on les
+                    entourant par \code{""} ou \code{''}. Exemple :
+                    \begin{lstlisting}[style=code]
+prenom = "Amine"
+prenom2 = "Moustapha"
+nom = 'Malaoui'
+                    \end{lstlisting}
+            \end{description}
+
+        \subsubsection{Afficher les variables}
+            Vous savez déjà qu'on peut afficher le contenu d'une variable avec \code{print()}, mais ce que vous 
+            ne savez pas c'est que \code{print()} permet d'afficher plusieurs variables à la fois. Il suffit 
+            juste de les séparer par des \code{,} :
+            \begin{lstlisting}[style=code]
+# Je cree mes variables
+prenom = "Amine"
+nom = "Malaoui"
+
+print("Salut, je m'appelle", prenom, nom)
+            \end{lstlisting}
+
+            En exécutant notre programme, PyCharm nous affichera ça :
+
+            \begin{lstlisting}[style=exec_result]
+/usr/bin/python3.5 /home/no_one/PycharmProjects/test/main.py
+Salut, je m'appelle Amine Malaoui
+
+Process finished with exit code 0
+            \end{lstlisting}
+
+        \subsubsection{Récupérer une saisie}
+            Ce que nous avons fait jusque là c'est de crée nos variables, et de les données des valeurs directement dans
+            le code source. Ce que nous allons apprendre maintenant c'est de demander de l'utilisateur 
+            de donner une valeur à notre variable au cours d'exécution.
+
+            Pour cela on va utiliser l'instruction de récupération de saisie, qui est \code{input()} : 
+            \begin{lstlisting}[style=code]
+# On demande a l'utilisateur de nous donner son prenom,
+# et on stock son prenom apres dans la variable prenom.
+prenom = input("Veuillez entrer votre prenom : ")
+
+# On dit bonjour a l'utilisateur.
+print("Bonjour", prenom)
+            \end{lstlisting}
+
+            Ce que fait ce code c'est qu'il affiche à l'utilisateur \code{Veillez entrer votre prenom :}, et il lui 
+            donne la main après pour qu'il entre son prénom. Son prénom est maintenant stocker dans la variable 
+            \code{prenom}. Voila ce que PyCharm nous affiche après l'exécution :
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/16_input.png}
+                \caption{PyCharm attend qu'on entre le prénom}
+            \end{figure}
+
+            Dès que l'utilisateur entre son nom et tape \code{Entrée}, PyCharm lui affiche \code{Bonjour} suivi 
+            du prénom de l'utilisateur :
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/17_input.png}
+                \caption{PyCharm affiche Bonjour suivi du prénom}
+            \end{figure}
+
+        \subsubsection{Exercice 2}
+            Ne passez pas ces exercices, c'est très important de pratiquer en informatique.
+
+            Voici l'énoncé de l'exercice :
+            \begin{itemize}
+                \item Créez un nouveau projet et surnommé le ``exercice 1'', et créez un fichier ``main'' dans ce
+                    projet.
+                \item Débrouillez vous pour que le programme demande le ``prenom'', ``nom'' et ``age'' de l'utilisateur.
+                    Puis affichez tous ça dans une phrase du genre : \code{Tu t'appelles Yanis Khelloufi et tu as 22 ans.}.
+            \end{itemize}
+
     \subsection{les opérateurs arithmétique}
     \subsection{Les conditions}
         Explication des structures avec un exemple après chaque petite explication.
