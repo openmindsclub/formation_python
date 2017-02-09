@@ -499,8 +499,52 @@ print("Bonjour", prenom)
                 \caption{PyCharm affiche Bonjour suivi du prénom}
             \end{figure}
 
+        \subsubsection{Comment nommé les variables}
+            On va parler de la meilleur manière de nommé les variables avant de finir cette partie. 
+            vous avez juste quelques règles à suivre, et tout passera à merveille :
+            \begin{itemize}
+                \item Le nom d'une variable doit commencer par une lettre. Exemple :
+                    \begin{lstlisting}[style=code]
+# Faux
+1prenom = 20 
+
+# Juste
+prenom1 = 20 
+
+# Juste
+prenom = 20
+                    \end{lstlisting}
+
+                \item Donner toujours des noms explicites à vos variables. C'est à dire en observant le nom de votre
+                    variable, il faut que vous serrez capable de comprendre son fonctionnement. Croyez moi, ça vous 
+                    sera extrêmement utiles quand vous réexaminer votre code. \\Par exemple, si on veut stocker 
+                    l'age d'un utilisateur :
+                    \begin{lstlisting}[style=code]
+# Faux, car c'est pas claire que x designe un age.
+x = 20
+
+# Juste
+age = 20
+                    \end{lstlisting}
+
+                \item Si le nom de votre variable doit être composé de plusieurs mots, séparer les mots par un \code{\_}.
+                    Exemple :
+                    \begin{lstlisting}[style=code]
+# Faux
+notedemath = 15
+
+# Juste
+note_de_math = 15
+                    \end{lstlisting}
+
+                \item Et enfin, n'utilisez pas de caractères avec accents (comme \code{é}, \code{è}, \code{à} \ldots)
+                    car ça peut vous posez des problèmes plus tard.
+            \end{itemize}
+
+            Enfin, nous avons terminé de parler sur les variables. Nous allons faire un petit exercices avant de passer
+            à la section suivante.
         \subsubsection{Exercice 2}
-            Ne passez pas ces exercices, c'est très important de pratiquer en informatique.
+            Ne sautez pas ces exercices, c'est très important de pratiquer en informatique.
 
             Voici l'énoncé de l'exercice :
             \begin{itemize}
@@ -510,7 +554,121 @@ print("Bonjour", prenom)
                     Puis affichez tous ça dans une phrase du genre : \code{Tu t'appelles Yanis Khelloufi et tu as 22 ans.}.
             \end{itemize}
 
+
+\clearpage
+
     \subsection{les opérateurs arithmétique}
+        Les ordinateurs sont des vrai machines à calcul, c'est ce qu'il savent faire le mieux. Donc dans cette partie
+        nous allons apprendre à faire des calcules avec python.
+
+        Il y a dans python 5 symboles qui nous permettent de faire des opérations arithmétique :
+        \begin{itemize}
+            \item \code{+} fait l'addition.
+            \item \code{-} fait la soustraction.
+            \item \code{*} fait la multiplication.
+            \item \code{/} fait la division entière.
+            \item \code{//} fait la division euclidienne.
+            \item \code{\%} donne le reste de la division euclidienne (on appel ça le \emph{modulo}).
+            \item \code{**} \colorbox{red}{fait la puissance.}
+        \end{itemize}
+
+        \subsubsection{Addition, soustraction, multiplication}
+            Pour l'addition et la soustraction et la multiplication, rien de plus simple, on utilise seulement 
+            les symboles approprié, et tout passe à merveille. Exemple :
+            \begin{lstlisting}[style=code]
+x = 10 + 5
+y = 21 - 7
+z = 9 * 9
+
+# Ceci affichera : 15 14 81
+print(x, y, z) 
+            \end{lstlisting}
+
+        \subsubsection{Division entière et Division euclidienne}
+            Pour voir la différence, un exemple vaut mieux qu'un long discours :
+            \begin{lstlisting}[style=code]
+division_entiere = 10 / 3
+division_euclidienne = 10 // 3
+
+# Ceci affichera : 3.3333333333333335  3
+print(division_entiere, division_euclidienne)
+            \end{lstlisting}
+
+        \subsubsection{Modulo (reste de la division euclidienne)}
+            Exemple :
+            \begin{lstlisting}[style=code, breaklines=false]
+x = 10 % 3
+
+# Ceci nous affichera 1. Car le reste de la division de 10 par 3 donne 1.
+print(x) 
+            \end{lstlisting}
+        \subsubsection{La puissance}
+            Rien de plus simple. Exemple :
+            \begin{lstlisting}[style=code]
+x = 5 ** 2
+
+# Ceci affichera 125
+print(x)
+            \end{lstlisting}
+        
+
+        \subsubsection{Opérations entre variables}
+            Sachez bien que toutes les opérations que nous avons vu précédemment sont aussi applicables sur les variables.
+            Donc on peut faire des calculs entres variables. Exemple : 
+            \begin{lstlisting}[style=code]
+a = 10
+b = 15
+resultat = a + b
+
+# Ceci affichera : 10 + 15 = 25
+print(a, "+", b, "=", resultat)
+            \end{lstlisting}
+
+        \subsubsection{Un petit problème !}
+            Essayez ce code : 
+            \begin{lstlisting}[style=code, breaklines=false]
+date_de_naissance = input("Veuillez entrez votre date de naissance : ")
+age = 2017 - date_de_naissance
+
+print("Votre avez", age, "ans")
+            \end{lstlisting}
+
+            Malheureusement, PyCharm n'a pas pu exécuter notre programme, et il nous affiche une erreur :
+            \begin{lstlisting}[style=exec_result]
+/usr/bin/python3.5 /home/no_one/PycharmProjects/test/main.py
+Veuillez entrez votre date de naissance : 1994
+Traceback (most recent call last):
+  File "/home/no_one/PycharmProjects/test/main.py", line 3, in <module>
+    age = 2017 - date_de_naissance
+TypeError: unsupported operand type(s) for -: 'int' and 'str'
+
+Process finished with exit code 1
+            \end{lstlisting}
+
+            Ce qui s'est passé c'est que l'instruction \code{input()} récupère la saisie sous forme de texte. Donc
+            ce qu'elle a stocké dans la variable \code{date\_de\_naissance} n'est pas le nombre \code{1994} mais plutôt
+            le texte (chaînes de caractères) \code{"1994"}. Donc quand Python arrive à l'instruction de la soustraction,
+            il essaye de soustraire un texte d'un entier, et là ça plante, car ce n'est pas possible.
+
+            La solution consiste à convertir notre variable \code{date\_de\_naissance} en un entier. C'est extrêmement 
+            simple, il suffit juste d'utiliser l'instruction \code{int()}. Voici à quoi rassemblerai notre nouveau
+            code source :
+            \begin{lstlisting}[style=code, breaklines=false]
+date_de_naissance = input("Veuillez entrez votre date de naissance : ")
+# On converti notre variable en un entier.
+date_de_naissance = int(date_de_naissance)
+
+age = 2017 - date_de_naissance
+
+print(age) 
+            \end{lstlisting}
+
+            Et cette fois, le programme marche à merveille. 
+
+            N'oubliez pas, dorénavant, quand vous utilisez \code{input()},
+            mettez en tête qu'elle récupère la saisie sous forme de texte. Pensez donc à convertir votre variable si 
+            vous voulez l'utiliser comme entier (utilisez \code{int()}) ou nombre à virgule (utilisez \code{float()}).
+
     \subsection{Les conditions}
         Explication des structures avec un exemple après chaque petite explication.
     \subsection{Les boucles}
