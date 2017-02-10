@@ -1,13 +1,15 @@
 \documentclass[12pt]{article}
 
-\usepackage[utf8]{inputenc}
+% \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[francais]{babel}
 %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 % \usepackage[Lenny]{fncychap}
-\usepackage{mathpazo}
+% \usepackage{mathpazo}
+\usepackage{fontspec}
+\setmainfont{ubuntu}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
-\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue, unicode]{hyperref}
 \frenchbsetup{StandardLists=true}
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet, topsep=0cm}
@@ -15,7 +17,10 @@
 \usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[bottom]{footmisc}
+\usepackage[defaultlines=4,all]{nowidow}
 \usepackage{subcaption}
+\usepackage{array}
 
 % To write inline code.
 \usepackage{xcolor}
@@ -54,6 +59,11 @@ breakatwhitespace=true,
 framerule=2pt,
 }
 
+
+\usepackage{awesomebox}
+\def\abIconQuestion{\symbol{"F059}}
+\newcommand{\questionbox}[1]{%
+  \awesomebox{\abIconQuestion}{\aweboxrulewidth}{abwarning}{#1}}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -194,7 +204,7 @@ framerule=2pt,
             et très pratique. On cite quelques avantages de ce langage :
             \begin{itemize}
                 \item Python est facile à apprendre et son code est facile à lire.
-                \item Il multiplate-forme, il marche sous Linux, Windows, et Mac OS.
+                \item Il est multiplate-forme, il marche sous Linux, Windows, et Mac OS.
                 \item C'est un langage orienté objet (on en parlera de ça dans le prochaines séances).
                 \item Il a une bibliothèque tierce qui permet de faire de la programmation web d'une manière très flexible.
                     Cette bibliothèque c'est \emph{Django}.
@@ -206,8 +216,9 @@ framerule=2pt,
             python ; et ce langage est intégré à la quasi totalité des distributions Linux (C'est-à-dire que vous pouvez l'utiliser
             dans ces distributions sans devoir l'installer).
 
+            \notebox{
             Juste pour information, il en existe deux versions de python qui ne sont pas compatibles entres eux. Ces
-            deux versions sont les 2.x et les 3.x . Nous on va utiliser la version 3.x qui est le future de python.
+            deux versions sont les 2.x et les 3.x . Nous on va utiliser la version 3.x qui est le future de python.}
             % \subsubsection{Les versions de Python}
             %     Python a deux versions qui ne sont pas compatibles entres eux. Ces deux versions sont la version \emph{2.x}
             %     et \emph{3.x}. La version 2.x n'est plus en développement, et il a été pour des raisons de compatibilité
@@ -248,6 +259,8 @@ framerule=2pt,
             le projet, configurer l'IDE \ldots\ etc, mais nous on utilisera que quelques boutons.
         \end{description}
 
+\clearpage
+
     \subsection{Hello World}
         Nous allons écrire maintenant notre premier programme. Un programme petit et simple pour comprendre le 
         fonctionnement de ce langage fascinant.
@@ -275,7 +288,7 @@ framerule=2pt,
             \label{new_file}
         \end{figure}
 
-        Doré avant, je vais seulement vous affiché les codes que vous devez écrire dans la zone principale (la zone 
+        Dorénavant, je vais seulement vous affiché les codes que vous devez écrire dans la zone principale (la zone 
         \textbf{1}, \autoref{pycharm}).
 
         On arrive maintenant à la programmation, voici votre premier programme :
@@ -359,7 +372,7 @@ On est dans une formation python, et on va cree des programmes super cool :D.
                 \item N'oubliez pas d'utiliser les commentaires pour expliquer votre code.
             \end{itemize}
 
-        \subsubsection{Solution du TP}
+        \subsubsection{Solution de l'exercice}
             \begin{lstlisting}[style=code, breaklines=false]
 # Ces deux instructions affiche des messages a l'ecran.
 print("Salut tout le monde.")
@@ -627,6 +640,7 @@ print(a, "+", b, "=", resultat)
         \subsubsection{Un petit problème !}
             Essayez ce code : 
             \begin{lstlisting}[style=code, breaklines=false]
+
 date_de_naissance = input("Veuillez entrez votre date de naissance : ")
 age = 2017 - date_de_naissance
 
@@ -676,8 +690,6 @@ print(age)
                     projet.
                 \item Demandez l'age de l'utilisateur, et dite lui à quel année il aura 100 ans.
             \end{itemize}
-    \subsection{Les conditions}
-        Explication des structures avec un exemple après chaque petite explication.
     \subsection{Les boucles}
         Explication des structures avec un exemple après chaque petite explication.
     \subsection{Découper le programme en fonctions}
