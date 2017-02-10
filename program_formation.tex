@@ -102,7 +102,7 @@ framerule=2pt,
 
             \begin{figure}[H]
                 \centering
-                \includegraphics[width=\textwidth]{img/3_assassins_creed.jpg}
+                \includegraphics[width=\textwidth, height=2.5in]{img/3_assassins_creed.jpg}
                 \caption{Le jeu Assassin's Creed}
             \end{figure}
             \begin{figure}[H]
@@ -140,7 +140,7 @@ framerule=2pt,
                 \caption{Les étapes de création d'un programme}
             \end{figure}
 
-            Une remarque très importante : les instructions que nous écrivons dans un langage de programmation 
+            \notebox{Une remarque très importante : les instructions que nous écrivons dans un langage de programmation 
             sont appelé \textbf{Code Source}. Gardez bien ce terme à l'esprit, parce qu'on va beaucoup l'utiliser 
             par la suite. Voici un exemple de code source python que nous écrirons plus tard :
             
@@ -149,6 +149,7 @@ framerule=2pt,
                 \includegraphics[width=\linewidth]{img/12_code.png}
                 \caption{Coude source Python}
             \end{figure}
+            }
 
         \subsubsection{Les langages de programmation les plus connus}
             \begin{description}
@@ -690,8 +691,219 @@ print(age)
                     projet.
                 \item Demandez l'age de l'utilisateur, et dite lui à quel année il aura 100 ans.
             \end{itemize}
+
+\clearpage
+
+    \subsection{Les conditions}
+        Les conditions sont des concepts fondamentaux de n'importe quel langage de programmation. Mais il sont un petit 
+        peu difficile à comprendre au début, mais vous verrez que dés que vous comprenez les conditions, vous serrai 
+        déjà capable de crée un programme disons intelligent et qui réagit selon la situation. 
+
+        Par exemple, vous demandez l'age de l'utilisateur, et puis vous lui affiche un message selon son age. Si il a 
+        plus de 18 ans, vous lui affichez \code{Vous êtes majeur}, sinon vous lui affichez \code{Vous êtes mineur}.
+
+        Avant de commencer de parler des conditions, il y a un ensemble de symbole que vous devez apprendre par cœur.
+        Ces symboles sont utilisés pour réaliser les conditions :
+
+        \begin{table}[h] % Le 'h' pour que la tableau soit dans la position qu'on vient d'indiquer.
+
+            \centering
+            \begin{tabular}{|c|l|}
+            \hline
+            \textbf{Symbole} & \textbf{Signification} \\
+            \hline
+            == & est égal à \\
+            \hline
+            > & est supérieur à \\
+            \hline
+            < & est inférieur à \\
+            \hline
+            >= & est supérieur ou égal à \\
+            \hline
+            <= & est inférieur ou égal à \\
+            \hline
+            != & est différent de \\
+            \hline
+            \end{tabular}
+
+            \caption{Symboles de comparaison} % On donne une légende à notre tableau
+        \end{table}
+        % Bon, jusque là, votre programme faisait toujours la même chose. Par exemple, il demande l'age de l'utilisateur, et 
+        % il le lui affiche, et quand vous le relancez à nouveau, il refait la même chose. 
+
+        % Avec les conditions, vos 
+        % programmes feront des choses différentes selon le contexte. Par exemple si l'utilisateur a plus de 18 ans, on 
+        % lui affiche \code{T'es majeur}, sinon on lui affiche \code{T'es mineur}.
+
+        \subsubsection{Le if}
+            Pour réaliser une condition minimal en python, il faut juste suivre un schéma simple, le voici :
+            \begin{lstlisting}[style=code]
+if condition :
+    instruction1
+    instruction2
+    .
+    .
+    .
+    instructionN
+            \end{lstlisting}
+
+            Donc, la condition \code{condition} sera évalué par python, si elle est vrai, il exécute toutes les instruction
+            qui se trouvent dans le bloc du \code{if}, et si elle est fausse, alors il va sauter toutes les instructions
+            qui se trouvent dans le bloc du \code{if}.
+
+            Attention, il faut que les instructions soient décalé par rapport 
+            à notre \code{if} comme  le montre l'exemple précédent. C'est comme ça que python comprend quelles sont les 
+            instruction qui appartiennent au \code{if} et quelles sont les instructions qui appartient au programme principale.
+
+            \notebox{Juste pour titre informatif, ce décalage est appelé \emph{Indentation}, et l'ensemble d'instruction qui se 
+            trouvent dans le \code{if} est appelé \emph{Un bloc de code}.}
+
+            On donne un exemple :
+            \begin{lstlisting}[style=code, breaklines=false]
+age = 20
+
+# On test si l'age est superieur a 18 pour afficher un message.
+if age > 18 :
+    print("Vous etes majeur")
+
+print("Au revoir")
+            \end{lstlisting}
+
+            Si on exécute ce code, on voit que le message \code{Vous etes majeur} est affiché, et même le message
+            \code{Au revoir} est affiché. Mais si on modifie l'age pour lui donner une valeur inférieur à \code{18}, alors 
+            seulement le message \code{Au revoir} est affiché, car cette instruction n'est pas inclut dans le bloc du \code{if}.
+
+        \subsubsection{Le else}
+            Pour enrichir encore plus notre code, on peut utilisé le \code{else}. Ça permet de désigner un bloc sinon, ce
+            bloc sera exécuté si la condition évalué dans le \code{if} est fausse. Un exemple :
+            \begin{lstlisting}[style=code, breaklines=false]
+age = 20
+
+# Si l'age est superieur a 18 on affiche : Vous etes majeur.
+# Sinon (c'est a dire l'age inferieur ou egale a 18) alors 
+# on affiche : Vous etes mineur.
+if age > 18 :
+    print("Vous etes majeur")
+else :
+    print("Vous etes mineur")
+
+print("Au revoir")
+            \end{lstlisting}
+
+            Si on modifie l'age pour qu'il soit inférieur ou égale à \code{18}, on remarquera que cette fois c'est le message 
+            \code{Vous etes mineur} qui sera affiché. Le message \code{Au revoir} est toujours affiché, car il n'appartient
+            ni au \code{if} ni au \code{else}.
+
+        \subsubsection{Le elif}
+            Le \code{elif} est une abréviation de \code{else if} qui veut dire \emph{Sinon Si}. Il se situe entre le 
+            \code{if} et le \code{else}, et ça permet de tester une autre condition.
+
+            Ça peut vous semblez abstrait, mais un exemple va éclaircir le concept :
+            \begin{lstlisting}[style=code, breaklines=false]
+age = 20
+
+# Si l'age est superieur a 70 alors on affiche : Salut papi
+# Sinon si l'age est superieur a 40 alors on affiche : Salut monsieur
+# Sinon si l'age est superieur a 18 alors on affiche : Salut jeune
+# Sinon on affiche le message qui se trouve dans le else.
+if age > 70 :
+    print("Salut papi")
+elif age > 40 :
+    print("Salut monsieur")
+elif age > 18 :
+    print("Salut jeune")
+else :
+    print("Tu n'appartient à aucune catégorie, dégage -_-")
+
+# Ce message est toujours affiché.
+print("Au revoir")
+                
+            \end{lstlisting}
+
+            En utilisant le \code{elif}, on pourra re-tester la valeur de la variable age une autre fois. Amusez vous
+            à changer la valeur de la variable \code{age}, et vous verrez qu'à chaque fois l'un des 4 messages est affiché.
+
+            \importantbox{
+            Faites très attention, un seule bloc d'instruction est exécuté parmi tous ces 4 blocs. Donc si on donne 
+            la valeur \code{70} à notre variable \code{age}, seul bloc de code du \code{if} sera exécuté, et tout les 
+            autres \code{elif} et le \code{else} seront ignoré.}
+
+        \subsubsection{Comparez les chaînes de caractères}
+            Sachez que c'est testes qu'on vient de voir ne sont pas applicables seulement au nombres, on peut aussi
+            les appliquer au chaînes de caractères. Exemples :
+
+            \begin{lstlisting}[style=code, breaklines=false]
+mot_de_passe = input("Veuillez entrez votre mot de passe: ")
+
+if mot_de_passe == "MonSuperMotDePasse" :
+    print("Bienvenu")
+else
+    print("Dégaaaaaaaaaage imposteur")
+            \end{lstlisting}
+        \subsubsection{Plusieurs conditions à la fois}
+            Jusque là, nous avons tester une seule condition dans le \code{if} ou le \code{elif}, par exemple "Si 
+            l'age est supérieur à 18". Mais comment faire si on veut tester "Si l'age est supérieur à 18 et 
+            inférieur à 40 au même temps" ??
+            Pour cela, il suffit d'utiliser les opérateurs logique. Ces opérateurs permettent de combiner plusieurs 
+            condition à la fois.
+
+            Il y a un ensemble de semble à apprendre pour réaliser cela :
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|c|c|}
+                    \hline
+                    \textbf{Symbole} & \textbf{Signification} \\
+                    \hline
+                    and & ET \\
+                    \hline
+                    or & OU \\
+                    \hline
+                    not & NON \\
+                    \hline
+                \end{tabular}
+                \caption{Les opérateurs logiques}
+            \end{table}
+
+            Voici quelques exemples du fonctionnement de ces opérateurs :
+            \begin{lstlisting}[style=code]
+# Si l'age est supérieur à 18 et inférieur à 40 au même temps.
+if age >= 18 and age <= 40:
+    # Les instructions
+            \end{lstlisting}
+
+            \begin{lstlisting}[style=code, breaklines=false]
+# Si on est Samedi ou Vendredi alors on entre dans le bloc du if.
+if jour == "Samedi" or jour == "Vendredi" :
+    # Pas d'études
+            \end{lstlisting}
+
+            \begin{lstlisting}[style=code]
+# Le 'not' est utilisé pour exprimé la négation d'une condition.
+# Ça se traduit en : si l'age n'est pas supérieur à 18.
+if not age > 18 :
+    # Les instructions 
+            \end{lstlisting}
+
+            Sachez qu'on peut combinez les opérateurs logiques entres eux, mais pour cela vaut mieux 
+            utiliser les parenthèses pour exprimer la priorité. Exemple :
+            \begin{lstlisting}[style=code]
+if (jour == "Samedi" or jour == "Vendredi") and chaleur < 35 :
+    # Sortir de la maison
+            \end{lstlisting}
+        
+        \subsubsection{Exercice 4}
+            Voici l'énoncé de l'exercice :
+            \begin{itemize}
+                \item Créer un projet nommé le `exercice 4' et créer un fichier `main.py' dedans.
+                \item Demandez un nombre de l'utilisateur, et dites lui si ce nombre est paire ou impaire.
+            \end{itemize}
+
+\clearpage
+
     \subsection{Les boucles}
         Explication des structures avec un exemple après chaque petite explication.
+        \subsubsection{while}
+        \subsubsection{for}
     \subsection{Découper le programme en fonctions}
         C'est quoi une fonction. Quelles sont les fonctions que nous avons déjà utilisés. Comment créer nos propres
         fonctions.
