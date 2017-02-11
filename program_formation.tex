@@ -350,7 +350,7 @@ Process finished with exit code 0
             Alors, on sait ce que sont les commentaires, mais comment les utiliser avec \code{python} ? Voici 
             un exemple sans plus tardé :
             \begin{lstlisting}[style=code]
-# Cette instructions affiche Hello World! a l'ecran.
+# Cette instruction affiche Hello World! a l'ecran.
 print("Hello World!") 
             \end{lstlisting}
 
@@ -451,7 +451,7 @@ print(age)
                     \begin{lstlisting}[style=code]
 pi = 3.14
                     \end{lstlisting}
-                \item[Du texte :] on les appels les chaînes de caractères ou \code{string} en python. On les définit on les
+                \item[Du texte :] on les appels les chaînes de caractères ou \code{str} en python. On les définit on les
                     entourant par \code{""} ou \code{''}. Exemple :
                     \begin{lstlisting}[style=code]
 prenom = "Amine"
@@ -642,7 +642,7 @@ print(a, "+", b, "=", resultat)
             Essayez ce code : 
             \begin{lstlisting}[style=code, breaklines=false]
 
-date_de_naissance = input("Veuillez entrez votre date de naissance : ")
+date_de_naissance = input("Veuillez entrer votre date de naissance : ")
 age = 2017 - date_de_naissance
 
 print("Votre avez", age, "ans")
@@ -651,7 +651,7 @@ print("Votre avez", age, "ans")
             Malheureusement, PyCharm n'a pas pu exécuter notre programme, et il nous affiche une erreur :
             \begin{lstlisting}[style=exec_result]
 /usr/bin/python3.5 /home/no_one/PycharmProjects/test/main.py
-Veuillez entrez votre date de naissance : 1994
+Veuillez entrer votre date de naissance : 1994
 Traceback (most recent call last):
   File "/home/no_one/PycharmProjects/test/main.py", line 3, in <module>
     age = 2017 - date_de_naissance
@@ -669,7 +669,7 @@ Process finished with exit code 1
             simple, il suffit juste d'utiliser l'instruction \code{int()}. Voici à quoi rassemblerai notre nouveau
             code source :
             \begin{lstlisting}[style=code, breaklines=false]
-date_de_naissance = input("Veuillez entrez votre date de naissance : ")
+date_de_naissance = input("Veuillez entrer votre date de naissance : ")
 # On converti notre variable en un entier.
 date_de_naissance = int(date_de_naissance)
 
@@ -699,7 +699,7 @@ print(age)
         peu difficile à comprendre au début, mais vous verrez que dés que vous comprenez les conditions, vous serrai 
         déjà capable de crée un programme disons intelligent et qui réagit selon la situation. 
 
-        Par exemple, vous demandez l'age de l'utilisateur, et puis vous lui affiche un message selon son age. Si il a 
+        Par exemple : vous pouvez demander l'age de l'utilisateur, et puis lui affiche un message selon son age. Si il a 
         plus de 18 ans, vous lui affichez \code{Vous êtes majeur}, sinon vous lui affichez \code{Vous êtes mineur}.
 
         Avant de commencer de parler des conditions, il y a un ensemble de symbole que vous devez apprendre par cœur.
@@ -751,9 +751,11 @@ if condition :
             qui se trouvent dans le bloc du \code{if}, et si elle est fausse, alors il va sauter toutes les instructions
             qui se trouvent dans le bloc du \code{if}.
 
+            \importantbox{
             Attention, il faut que les instructions soient décalé par rapport 
             à notre \code{if} comme  le montre l'exemple précédent. C'est comme ça que python comprend quelles sont les 
             instruction qui appartiennent au \code{if} et quelles sont les instructions qui appartient au programme principale.
+            }
 
             \notebox{Juste pour titre informatif, ce décalage est appelé \emph{Indentation}, et l'ensemble d'instruction qui se 
             trouvent dans le \code{if} est appelé \emph{Un bloc de code}.}
@@ -779,13 +781,13 @@ print("Au revoir")
             \begin{lstlisting}[style=code, breaklines=false]
 age = 20
 
-# Si l'age est superieur a 18 on affiche : Vous etes majeur.
-# Sinon (c'est a dire l'age inferieur ou egale a 18) alors 
-# on affiche : Vous etes mineur.
+# Si l'age est supérieur a 18 on affiche : Vous êtes majeur.
+# Sinon (c'est a dire l'age inférieur ou égale a 18) alors 
+# on affiche : Vous êtes mineur.
 if age > 18 :
-    print("Vous etes majeur")
+    print("Vous êtes majeur")
 else :
-    print("Vous etes mineur")
+    print("Vous êtes mineur")
 
 print("Au revoir")
             \end{lstlisting}
@@ -833,7 +835,7 @@ print("Au revoir")
             les appliquer au chaînes de caractères. Exemples :
 
             \begin{lstlisting}[style=code, breaklines=false]
-mot_de_passe = input("Veuillez entrez votre mot de passe: ")
+mot_de_passe = input("Veuillez entrer votre mot de passe: ")
 
 if mot_de_passe == "MonSuperMotDePasse" :
     print("Bienvenu")
@@ -890,7 +892,36 @@ if not age > 18 :
 if (jour == "Samedi" or jour == "Vendredi") and chaleur < 35 :
     # Sortir de la maison
             \end{lstlisting}
+
+        \subsubsection{Les booléens}
+            Il y a un autre type de variables dont je ne vous ai pas parlé avant pour ne pas vous en charger. 
+            Ce type de variable est appelé \emph{Booléen} (\code{bool} en python) et il est très 
+            utilisé dans les conditions et les boucles. 
+
+            Les booléens sont des variables qui peuvent contenir une de deux valeurs seulement : \code{True} 
+            (qui veut dire vrai) ou \code{False} (qui veut dire faux), et on peut testé directement si ces 
+            variables sont à vrai dans les conditions : 
+            % ces variables dans les conditions
+            % sans utilisé les opérateurs de comparaisons. Exemple :
+            \begin{lstlisting}[style=code]
+heureux = True
+
+# Si la variable heureux est vrai, alors on entre dans le if,
+# Sinon on entre dans le else.
+if heureux :
+    print("Ah, je vois que t'es heureux aujourd'hui")
+else :
+    print("Mais pourquoi t'es triste ??")
+            \end{lstlisting}
         
+            \notebox{Les opérateurs logiques sont applicable sur les booléens. Exemple :}
+            \begin{lstlisting}[style=code]
+# Ça se traduit en : Si la personne et heureuse et 
+# le jour et beau alors Sorte de la maison.
+if heureux and beau_jour :
+    # Sortir de la maison
+            \end{lstlisting}
+
         \subsubsection{Exercice 4}
             Voici l'énoncé de l'exercice :
             \begin{itemize}
@@ -901,7 +932,6 @@ if (jour == "Samedi" or jour == "Vendredi") and chaleur < 35 :
 \clearpage
 
     \subsection{Les boucles}
-        Explication des structures avec un exemple après chaque petite explication.
         \subsubsection{while}
         \subsubsection{for}
     \subsection{Découper le programme en fonctions}
