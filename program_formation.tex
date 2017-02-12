@@ -932,8 +932,177 @@ if heureux and beau_jour :
 \clearpage
 
     \subsection{Les boucles}
-        \subsubsection{while}
-        \subsubsection{for}
+        Si vous avez compris les conditions, les boucles seront un jeu d'enfant. En gros, les boucles servent à répéter
+        certaines instructions plusieurs fois, et on a deux boucles dans le langage python :
+        \begin{itemize}
+            \item La boucle \code{while} qui signifie \emph{tant que}.
+            \item La boucle \code{for} qui signifie \emph{pour}.
+        \end{itemize}
+
+
+        \subsubsection{La boucle while}
+            % \questionbox{Comment les boucles while sont elles réalisé en python ??}
+
+            La boucle \code{while} permet de répéter un bloc d'instructions \emph{tant que} une condition est vrai.
+            Exemple :
+            \begin{lstlisting}[style=code]
+touche = ""
+
+while touche != "q" :
+    touche = input("Tapez q pour sortir : ")
+
+print("Au revoir")
+            \end{lstlisting}
+
+            Dans cet exemple, on demande à l'utilisateur d'entrer la lettre \code{q}. Si il reste sage et il fait 
+            ce que nous le avons demandé, alors on lui laisse sortir de la boucle, sinon on lui redemande à nouveau 
+            jusqu'à ce qu'il entre la touche \code{q}.
+
+            \notebox{On peut utilisé les booléens avec la boucle \code{while}. Exemple : }
+            \begin{lstlisting}[style=code]
+heureux = True
+
+while heureux :
+    # Continuez de sourire.
+            \end{lstlisting}
+            
+            On donne un autre exemple de l'utilisation de la boucle \code{while}. Imaginez que votre prof vous 
+            demande d'écrire un programme qui affiche le message "Ceci est un message très utile" 10 fois, 
+            vous pouvez faire ça :
+            \begin{lstlisting}[style=code]
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+print("Ceci est un message très utile")
+            \end{lstlisting}
+
+            C'est vrai que ça accomplira ce que votre prof a demandé, mais ce n'est ni propre ni pratique. Et imaginez
+            encore si cette fois elle vous demande d'afficher ce message 100 fois, ou 1000 fois \ldots on voit bien que 
+            cette technique n'est plus efficace.
+
+            Ce qu'on peut faire pour réaliser ce que le prof a demandé c'est d'utiliser la boucle \code{while} et un 
+            \emph{compteur} :
+            \begin{lstlisting}[style=code]
+# On initialise notre variable qui nous servira de compteur.
+i = 0
+
+# Tant que la variable compteur est inférieur à 10 on
+# affiche un autre message.
+while i < 10:
+    print("Ceci est un message très utile")
+    # On incrémente notre compteur pour savoir quand s'arrêter.
+    i = i + 1
+            \end{lstlisting}
+
+            Voici le résultat d'exécution :
+            \begin{lstlisting}[style=exec_result]
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+Ceci est un message très utile
+            \end{lstlisting}
+
+            \notebox{La variable \code{i} est souvent utilisé en informatique comme un compteur ou pour parcourir les tableaux
+            (on verra ça plus tard). }
+
+            \notebox{En informatique, dans la majorité des cas, on commence nos compteur de \code{0} et pas de \code{1}.
+            Ça a une relation avec le parcours des tableaux qu'on verra dans les prochaines sections. Donc si vous voulez
+            utilisé un compteur, il faut de préférence commencer de \code{0}.}
+
+
+        \subsubsection{La boucle for}
+            La boucle \code{for} est utilisé uniquement avec les compteurs. C'est une forme compacté de la boucle \code{while}
+            précédente. Si on refait l'exemple précédent en utilisant la boucle \code{for} ça nous donne ça :
+            \begin{lstlisting}[style=code]
+# Ça se traduit en : pour i allant de 0 à 10 (exclus).
+for i in range(0, 10):
+    print("Ceci est un message très utile")
+            \end{lstlisting}
+
+            Dans cet exemple, \code{i} prend chacune des valeurs \code{0}, \code{1}, \code{2}, \code{3}, \code{4}, \code{5}, 
+            \code{6}, \code{7}, \code{8}, \code{9}. Et à chaque fois on affiche le message \code{Ceci est un 
+            message très utile}.
+
+            Pour voir que \code{i} prend vraiment toute ces valeurs là, on peut afficher la variable \code{i} à chaque
+            itération de la boucle :
+            \begin{lstlisting}[style=code]
+for i in range(0, 10) :
+    print(i)
+            \end{lstlisting}
+
+            Ce qui nous donne ça :
+            \begin{lstlisting}[style=exec_result]
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+            \end{lstlisting}
+
+            On a vu la boucle \code{for}. Maintenant détaillons un peu comment l'utiliser :
+            \begin{lstlisting}[style=code]
+for i in range(depart, arrivee) :
+    print(i)
+            \end{lstlisting}
+
+            La variable \code{i} parcourra toute les valeurs en démarrant de la valeur \code{depart} (inclus) 
+            jusqu'à la valeur \code{arrivee} (exclus). Amusez vous à changer la valeur de \code{depart}
+            et \code{arrivee} pour voir quelles sont les valeurs pris par \code{i}.
+
+        \subsubsection{Un bonus de l'utilisation de la boucle for}
+
+            Dans certaines situations, on utilise la boucle \code{for} de cette manière :
+            \begin{lstlisting}[style=code]
+for i in range(depart, arrivee, pas) :
+    print(i)
+            \end{lstlisting}
+
+            C'est comme l'utilisation précédente, mais là on a ajouté le \code{pas}. Ce \code{pas} est utilisé pour dire à 
+            la variable \code{i} combien elle doit sauter à chaque itération de la boucle. Essayez cette exemple et vous 
+            verrez :
+            \begin{lstlisting}[style=code]
+for i in range(0, 10, 2) :
+    print(i)
+            \end{lstlisting}
+
+            L'exécution nous donne ça :
+            \begin{lstlisting}[style=exec_result]
+0
+2
+4
+6
+8
+            \end{lstlisting}
+
+            \code{i} démarre de \code{0}, mais à chaque itération de la boucle, elle fait un saut de \code{2}.
+
+        \subsubsection{Exercice 5}
+            Voici l'énoncé :
+            \begin{itemize}
+                \item Créez un projet nommé `exercice 5' et créez un fichier dedans nommé `main.py'.
+                \item Demandez à l'utilisateur d'entrer un nombre, et affichez lui tous les diviseurs de ce nombre. 
+                    Exemple : S'il entre \code{10}, vous lui affichez \code{1}, \code{2}, \code{5}, \code{10}.
+            \end{itemize}
+
+\clearpage
+
     \subsection{Découper le programme en fonctions}
         C'est quoi une fonction. Quelles sont les fonctions que nous avons déjà utilisés. Comment créer nos propres
         fonctions.
