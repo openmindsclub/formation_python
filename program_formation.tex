@@ -211,6 +211,7 @@ framerule=2pt,
                     Cette bibliothèque c'est \emph{Django}.
                 \item Il permet de développer très rapidement en utilisant peu de code, et de crée des applications 
                     très complexe avec facilité. Tous ça grâce à son style et à sa bibliothèque standard très complète.
+                \item Il est très utilisé par les pentesters et les hackers.
             \end{itemize}
 
             Pour finir, il faut savoir que les géants de l'informatique comme Google, Yahoo, NASA préférent le langage
@@ -441,7 +442,7 @@ print(age)
                 \caption{Affichage de la variable age}
             \end{figure}
 
-        \subsubsection{Quel genre d'information on peut stocker dans nos variable}
+        \subsubsection{Quel genre d'information on peut stocker dans nos variables}
             Il existe essentiellement 3 types d'information qu'on peut stocker dans les variables :
             \begin{description}
                 \item[Les entiers :] comme ce que nous avons stocké dans la variable \code{age} que nous avons 
@@ -583,7 +584,7 @@ note_de_math = 15
             \item \code{/} fait la division entière.
             \item \code{//} fait la division euclidienne.
             \item \code{\%} donne le reste de la division euclidienne (on appel ça le \emph{modulo}).
-            \item \code{**} \colorbox{red}{fait la puissance.}
+            \item \code{**} calcul la puissance.
         \end{itemize}
 
         \subsubsection{Addition, soustraction, multiplication}
@@ -638,6 +639,28 @@ resultat = a + b
 print(a, "+", b, "=", resultat)
             \end{lstlisting}
 
+        \subsubsection{Bonus}
+            Dans la majorité des autres langages de programmation, pour permuter deux variables
+            (échanger leurs contenus), il faut toute une série d'opérations. 
+
+            Exemple : disons on a les variables \code{a} et
+            \code{b}, pour permuter leurs valeurs dans les autres langages de programmation, il faut faire ça :
+            \begin{lstlisting}[style=code]
+# Il faut ces trois opérations pour permuter les valeurs
+# de a et b
+variable_temporaire = a
+a = b
+b = variable_temporaire 
+            \end{lstlisting}
+
+            Alors en python, il suffit juste de faire :
+            \begin{lstlisting}[style=code]
+# cette instruction permutent les valeurs de a et b
+a, b = b, a 
+            \end{lstlisting}
+
+            Vous pouvez créer les variables \code{a} et \code{b}, essayez ce code, et afficher ces deux variables
+            pour voir le résultat. 
         \subsubsection{Un petit problème !}
             Essayez ce code : 
             \begin{lstlisting}[style=code, breaklines=false]
