@@ -7,7 +7,10 @@
 % \usepackage[Lenny]{fncychap}
 % \usepackage{mathpazo}
 \usepackage{fontspec}
-\setmainfont{ubuntu}
+\setmainfont[
+    SmallCapsFont={TeX Gyre Termes},
+    SmallCapsFeatures={Letters=SmallCaps},
+]{ubuntu}
 \usepackage[a4paper, width=150mm, top=25mm, bottom=25mm]{geometry}
 \usepackage[colorlinks=true, linkcolor=blue, unicode]{hyperref}
 \frenchbsetup{StandardLists=true}
@@ -65,8 +68,19 @@ framerule=2pt,
 \newcommand{\questionbox}[1]{%
   \awesomebox{\abIconQuestion}{\aweboxrulewidth}{abwarning}{#1}}
 
+
+\hyphenation{simp-le simp-les}
+
+
+\title{Formation Python}
+\author{Malaoui, Sidahmed Bilal}
+\date{14 Février 2017}
+
+
 \begin{document}
 \pagenumbering{gobble}
+\maketitle
+\clearpage
 \renewcommand{\contentsname}{Sommaire}
 \tableofcontents
 \newpage
@@ -128,7 +142,8 @@ framerule=2pt,
             
             Voici comment cela fonctionne :
             \begin{itemize}
-                \item On donne nos instructions à l'ordinateur en utilisant un langage de programmation.
+                % \item On donne nos instructions à l'ordinateur en utilisant un langage de programmation.
+                \item On écrit nos instructions en utilisant un langage de programmation.
                 \item Les instructions sont traduites en binaire grâce à un programme de traduction.
                 \item L'ordinateur peut alors lire le binaire et faire ce qu'on l'a demandé.
             \end{itemize}
@@ -260,6 +275,54 @@ framerule=2pt,
             \item[La barre d'outils (4):] elle contient de nombreux boutons qui font différentes choses : exécuter 
             le projet, configurer l'IDE \ldots\ etc, mais nous on utilisera que quelques boutons.
         \end{description}
+
+        \subsubsection{Installer Python et PyCharm sous Linux}
+            Python est installé par défaut dans toute les distributions Linux. Par contre, il faut installer 
+            l'IDE PyCharm, pour cela, il suffit d'ouvrir un terminal (Ctrl+alt+t) et exécuter ces commandes :
+            \begin{lstlisting}[language=bash, style=code, numbers=none]
+sudo add-apt-repository ppa:mystic-mirage/pycharm
+sudo apt-get update
+sudo apt-get install pycharm-community 
+            \end{lstlisting} 
+
+            Et voila, PyCharm est installé sur votre machine. Il suffit juste de le lancer en appuyant le bouton 
+            windows (\autoref{button_windows}) et écrire \code{pycharm} (\autoref{launch_pycharm}) puis tapez entrer.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.5\linewidth]{img/8_windows_button.jpg}
+                \caption{Bouton windows}
+                \label{button_windows}
+            \end{figure}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/8_lancer_pycharm.png}
+                \caption{Lancer PyCharm}
+                \label{launch_pycharm}
+            \end{figure}
+        \subsubsection{Installer Python et PyCharm sous Windows}
+            Python n'est pas installé par défaut sur Windows, donc il faut installer Python et l'IDE PyCharm.
+
+            Pour installer Python, visitez ce lien 
+            \href{https://www.python.org/downloads/}{https://www.python.org/downloads/} et télécharger la 
+            dernière version de Python (au moment du déroulement de la formation, c'est la version \code{3.6}).
+            Installez là quand vous finissez le téléchargement.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/8_python_download.png}
+                \caption{Lien de téléchargement de Python}
+            \end{figure}
+
+            Pour PyCharm, télécharger la version \code{community} sur ce lien \href{https://www.jetbrains.com/pycharm/download/}{https://www.jetbrains.com/pycharm/download/} (\autoref{site_pycharm}) et installez là.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/8_pycharm_download.png}
+                \caption{Lien de de téléchargement PyCharm}
+                \label{site_pycharm}
+            \end{figure}
 
 \clearpage
 
@@ -393,17 +456,26 @@ print("On est dans une formation python, et on va cree des programmes super cool
         pour l'utilisé plus tard dans votre programme, vous demandez à votre ordinateur de vous allouer un tiroir. 
         Ce tiroir vous serra allouer jusqu'à la fin de votre programme.
 
-        \colorbox{red}{Photos ici avec un tiroir avec la valeur 20 dedans}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{img/13_variable.png}
+            \caption{Une tiroir qui stocke notre information} 
+        \end{figure}
 
         Ce tiroir est le votre, vous pouvez placez des information dedans, les consulter, les retirer.
 
-
-        Donc, où sont les variables dans tous ça ?? Les variables sont des noms qu'on associé aux tiroirs que nous 
+        \questionbox{Donc, où sont les variables dans tous ça ??}
+        
+        Les variables sont des noms qu'on associé aux tiroirs que nous 
         avons demandé. Donc, dans l'exemple précédent, nous avons utilisé un tiroir pour stocker un age, donc nous 
         allons nommé ce tiroir \code{age}. Et à chaque fois qu'on veut consulter ou modifier le contenu de ce tiroir, 
         (supposons vous avez oublié votre age) on utilise le mot \code{age}.
 
-        \colorbox{red}{Photos ici avec un tiroir avec une étiquette age collé sur, et la valeur 20 dedans}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{img/14_variable.png}
+            \caption{Une tiroir qui stocke notre information, et qui est accessible par le nom age}
+        \end{figure}
 
         \subsubsection{Créer et utiliser les variables avec python}
             Pour créer une variable avec python, rien de plus simple. Il suffit d'écrire le nom de notre variable :
@@ -872,7 +944,7 @@ else
             Pour cela, il suffit d'utiliser les opérateurs logique. Ces opérateurs permettent de combiner plusieurs 
             condition à la fois.
 
-            Il y a un ensemble de semble à apprendre pour réaliser cela :
+            Il y a un ensemble de règles à apprendre pour réaliser cela :
             \begin{table}[H]
                 \centering
                 \begin{tabular}{|c|c|}
