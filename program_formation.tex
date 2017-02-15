@@ -79,7 +79,45 @@ framerule=2pt,
 
 \begin{document}
 \pagenumbering{gobble}
-\maketitle
+
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+
+    % Upper part of the page. The '~' is needed because \\
+    % only works if a paragraph has started.
+    \includegraphics[width=0.5\linewidth]{img/OMC_logo.png}~\\[1.5cm]
+
+    \textsc{\LARGE Open Minds Club}\\[2cm]
+
+    \textsc{\Large Formation}\\[1.5cm]
+
+    % Title
+    \HRule \\[0.4cm]
+    { \huge \bfseries Langage Python\\[0.4cm] }
+
+    \HRule \\[2cm]
+    \includegraphics[scale=0.2]{img/OMC_logo.png}
+    \\[2cm]
+
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{center} \large
+        Sidahmed Bilal \textsc{Malaoui}\\
+      \end{center}
+    \end{minipage}
+
+    \vfill
+
+    % Bottom of the page
+    {\large 14\iemes{} Février 2017 — 20 Mars 2017}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+
 \clearpage
 \renewcommand{\contentsname}{Sommaire}
 \tableofcontents
@@ -276,9 +314,9 @@ framerule=2pt,
             le projet, configurer l'IDE \ldots\ etc, mais nous on utilisera que quelques boutons.
         \end{description}
 
-        \subsubsection{Installer Python et PyCharm sous Linux}
-            Python est installé par défaut dans toute les distributions Linux. Par contre, il faut installer 
-            l'IDE PyCharm, pour cela, il suffit d'ouvrir un terminal (Ctrl+alt+t) et exécuter ces commandes :
+        \subsubsection{Installer Python et PyCharm sous Ubuntu Linux}
+            Python est installé par défaut dans toute les distributions Linux. Par contre, l'IDE PyCharm il 
+            faut l'installer. Pour cela, il suffit d'ouvrir un terminal (Ctrl+alt+t) et exécuter ces commandes :
             \begin{lstlisting}[language=bash, style=code, numbers=none]
 sudo add-apt-repository ppa:mystic-mirage/pycharm
 sudo apt-get update
@@ -1199,31 +1237,233 @@ for i in range(0, 10, 2) :
 \clearpage
 
     \subsection{Découper le programme en fonctions}
-        C'est quoi une fonction. Quelles sont les fonctions que nous avons déjà utilisés. Comment créer nos propres
-        fonctions.
-    \subsection{Les modules}
-    \subsection{TP}
-    \subsection{Le help}
-        Obtenir le help depuis la console.
+        Jusque là, nous avons écrit toutes nos instructions directement , l'une après l'autre. Maintenant, nous allons
+        apprendre à découper nos programmes en petit bouts, et cela grâce aux fonctions.
 
-\section{La programmation orientée objet}
-    \subsection{C'est quoi déjà un objet ?}
-    \subsection{Les différents types d'objets disponible}
-        On parlera des string, listes, tuples et des dictionnaires.
-    \subsection{Les opérations sur les fichiers}
-        Ouverture, lecture, écriture des fichiers.
-    \subsection{Les chaînes de caractères}
-    \subsection{Les listes}
-    \subsection{Les tuples}
-    \subsection{Les dictionnaires}
-    \subsection{TP}
+        \subsubsection{C'est quoi une fonction ?}
+            Une fonction est un ensemble d'instructions qu'on groupe ensemble. Cet ensemble d'instructions exécute 
+            des actions et renvoient un résultat.
 
-\section{Les bibliothèques standards}
-    \subsection{Exécutions des commandes systèmes}
-    \subsection{L'aléatoire}
-    \subsection{Gestion des mots de passes}
-    \subsection{Le réseau}
+            Il vaut mieux que vous comprenez les fonctions avec les exemples, alors on va donner plusieurs exemples
+            et on va les expliquer un à un.
 
-\section{Allez plus loin}
-    Des tutos pour la programmation graphique avec PyQt. Le tuto d'openclassrooms.
+        \subsubsection{Fonction simple}
+
+            Voici l'exemple d'une fonction qui calcule le triple d'un nombre :
+            \begin{lstlisting}[style=code]
+def triple(nombre) :
+    resultat = nombre * 3
+    return resultat
+            \end{lstlisting}
+
+            Et voici comment on va utiliser cette fonction dans notre programme :
+            \begin{lstlisting}[style=code]
+# Instructions ici  
+x = triple(7)
+
+# Ceci nous affichera 21
+print(x)
+            \end{lstlisting}
+
+            Des explications s'impose ici :
+            \begin{itemize}
+                \item \code{def triple(nombre) :} : \code{def} est un mot clé utilisé par python, ce mot nous
+                    permet de crée les fonctions. \code{triple} est le nom de notre fonction, c'est ce 
+                    mot qui nous permet d'utiliser notre fonction dans notre programme principale. \code{nombre}
+                    est une variable qui est crée à l'intérieur de la fonction, cette variable prend la valeur qu'on
+                    donne à notre fonction au moment de l'utiliser (dans cette exemple elle prend la valeur \code{7} 
+                    à cause de l'instruction \code{x = triple(7)}) ; une fois la fonction est fini, la variable 
+                    \code{nombre} est effacé.
+
+                    % \notebox{La variable \code{nombre} est appelé paramètre, dans le sens où la fonction utilise 
+                    % les paramètres à la fonction}
+                \item \code{resultat = nombre * 3} : ceci est une instruction qui est exécuté dans notre fonction. 
+                    On peut mettre autant d'instruction qu'on veut dans la fonction, il faut juste ne pas oublier de
+                    les décaler (comme on a vu dans les conditions).
+                \item \code{return resultat} : cette ligne renvoie la valeur de la variable \code{resultat} au 
+                    programme principale.
+                \item \code{x = triple(7)} : cette instruction appel la fonction \code{triple()} en lui donnant la 
+                    valeur \code{7}. Ensuite, la valeur renvoyer par la fonction \code{triple()} sera stocker dans
+                    la variable \code{x}.
+            \end{itemize}
+
+            Donc voici notre programme en tout :
+            \begin{lstlisting}[style=code]
+def triple(nombre) :
+    resultat = nombre * 3
+    return resultat
+
+
+# C'est d'ici que commence l'exécution de notre programme.
+x = triple(7)
+
+print(x)
+            \end{lstlisting}
+
+            \importantbox{N'oubliez pas de décaler les instructions dans la fonction, sinon python ne fera pas la 
+            différence entre les instructions qui sont dans la fonctions et les instructions qui sont dans le 
+            programme principale.
+            }
+
+        \subsubsection{Plusieurs paramètres}
+            On peut utiliser plusieurs variables entre les parenthèses de la fonction, et pas seulement une comme
+            on a fait dans l'exemple précédent.  Par exemple, on a ici une fonction qui calcule la somme 
+            de deux nombres :
+            \begin{lstlisting}[style=code]
+def addition(nombre1, nombre2) :
+    resultat = nombre1 + nombre2
+    return resultat
+            \end{lstlisting}
+
+            \notebox{Les variables qui sont créent entre les parenthèse de la fonction sont appelé \emph{paramètres}. 
+            On les appels comme ça dans le sens où se sont des paramètres qu'on passe à la fonction pour qu'elle fait 
+            ces calculs.
+            }
+
+            Et voici notre programme qui utilise cette fonction :
+            \begin{lstlisting}[style=code]
+def addition(nombre1, nombre2) :
+    resultat = nombre1 + nombre2
+    return resultat
+
+# C'est ici que commence l'exécution de notre programme.
+a = 10
+b = 25
+
+x = addition(a, b)
+
+print(x)
+            \end{lstlisting}
+
+        \subsubsection{Fonction qui ne renvoie rien}
+            On peut aussi crée une fonction qui ne renvoie rien. Exemple :
+            \begin{lstlisting}[style=code]
+def presentation(nom, prenom, age) :
+    print("Bonjour.")
+    print("Je m'appelle", nom, prenom, "et j'ai", age, "ans")
+            \end{lstlisting}
+
+            Et voici le programme qui l'utiliser :
+            \begin{lstlisting}[style=code]
+def presentation(nom, prenom, age) :
+    print("Bonjour.")
+    print("Je m'appelle", nom, prenom, "et j'ai", age, "ans")
+
+# C'est ici que commence l'exécution de notre programme.
+presentation("Yanis", "Khelloufi", 22)
+            \end{lstlisting}
+
+        \subsubsection{Fonction qui renvoie plusieurs valeurs}
+            On peut aussi crée une fonction que renvoie plusieurs valeurs. Voici un exemple d'une fonction qui fait
+            la division euclidienne, et renvoie le résultat de la division et le reste de la division :
+            \begin{lstlisting}[style=code]
+def division_euclidienne(divisee, diviseur) :
+    resultat_de_division = divisee // diviseur
+    reste_de_division = divisee \% diviseur
+
+    return resultat_de_division, reste_de_division
+            \end{lstlisting}
+
+            Pour récuperer ce que la fonction a renvoyé on fait ça :
+            \begin{lstlisting}[style=code]
+# 'a' recevra la valeur de la variable 'resultat_de_division', 
+# et 'b' recevra la valeur de la variable 'reste_de_division'.
+a, b = division_euclidienne(20, 3)
+            \end{lstlisting}
+
+            Voici le code complet de notre programme :
+            \begin{lstlisting}[style=code]
+def division_euclidienne(divisee, diviseur) :
+    resultat_de_division = divisee // diviseur
+    reste_de_division = divisee \% diviseur
+
+    return resultat_de_division, reste_de_division
+
+# C'est ici que commence l'exécution de notre programme.
+a, b = division_euclidienne(20, 3)
+
+# Ceci nous affichera : 6 2
+print(a, b)
+            \end{lstlisting}
+%             \begin{lstlisting}[style=code]
+% # Instructions ici
+
+% nom_de_la_fonction(valeur1, valeur2, ...)
+                
+% # Instructions ici
+%             \end{lstlisting}
+
+%             Détaillons un peu de quoi il est composé ce schéma :
+%             \begin{itemize}
+%                 \item \code{parametre1}, \code{parametre2} sont des variables qu'on donne 
+%             \end{itemize}
+
+            % En faite, vous avez déjà utilisé plusieurs fonctions déjà disponible en python. Ces fonctions sont :
+            % \code{print()}, \code{input()}, \code{int()}. Dans ces fonctions, il y a bien des instructions qui
+            % permettent à ces fonctions de réaliser une tâche bien précise. La tâche de \code{print()} est d'afficher 
+            % un message à l'écran, la tâche de \code{input()} est de récupérer la saisie de l'utilisateur \ldots
+        
+%             Donc quelques parts dans votre système, il y a un fichier ou la fonction \code{print()} est crée comme 
+%             ça :
+%             \begin{lstlisting}
+% def print(paramatres) :
+%     # Les instructions d'affichage.
+%             \end{lstlisting}
+
+        \subsubsection{Pourquoi découper notre programme ??}
+        C'est vrai que les exemples que nous avons donnée jusque là ne semblent pas vraiment utiles. Mais sachez que
+        se sont que des exemples pour que vous compreniez comment crée les fonctions. Quand on découpe vraiment, 
+        on découpe en des fonctions qui sont vraiment utiles, exemple : une fonction qui nous dit si un nombre
+        est premier ou pas.
+
+        \questionbox{On revient à notre question, pourquoi découper ??}
+
+        Et bien, pour faciliter la réalisation d'un programme et pour rendre notre code source plus lisible et plus 
+        organisé. Car les programmes que nous avons réalisé jusque là sont des programmes simples, qui ne dépassent 
+        pas une dizaine de lignes de code. Mais les vrai programmes sont beaucoup plus complexes que ça, et il peuvent 
+        atteindre les dizaines de milliers de lignes de codes très facilement. 
+        Sans découper, vous ne pouvez pas créez ou maintenir ce genre de programme.
+
+        \subsubsection{Exercice 6}
+            Voici l'énoncé de l'exercice :
+            \begin{itemize}
+                \item Créez un projet nommé `exercice 6' et créez un fichier dedans nommé `main.py'.
+                \item Créez une fonction qui reçoit un nombre en paramètre, et qui nous dit s'il est premier où pas.
+
+                    \tipbox{Cette fonction retourne \code{True} où \code{False}}
+
+                    \notebox{Un nombre premier est un nombre qui est divisible seulement par \code{1} et par lui
+                        même. En d'autre terme, aucun autre nombre ne divise ce nombre}
+
+                \item Dans votre programme principale, demander un nombre de l'utilisateur, et dite lui si ce nombre
+                    est premier ou pas.
+            \end{itemize}
+
+\clearpage
+
+%     \subsection{Les modules}
+%     \subsection{TP}
+%     \subsection{Le help}
+%         Obtenir le help depuis la console.
+
+% \section{La programmation orientée objet}
+%     \subsection{C'est quoi déjà un objet ?}
+%     \subsection{Les différents types d'objets disponible}
+%         On parlera des string, listes, tuples et des dictionnaires.
+%     \subsection{Les opérations sur les fichiers}
+%         Ouverture, lecture, écriture des fichiers.
+%     \subsection{Les chaînes de caractères}
+%     \subsection{Les listes}
+%     \subsection{Les tuples}
+%     \subsection{Les dictionnaires}
+%     \subsection{TP}
+
+% \section{Les bibliothèques standards}
+%     \subsection{Exécutions des commandes systèmes}
+%     \subsection{L'aléatoire}
+%     \subsection{Gestion des mots de passes}
+%     \subsection{Le réseau}
+
+% \section{Allez plus loin}
+%     Des tutos pour la programmation graphique avec PyQt. Le tuto d'openclassrooms.
 \end{document}
