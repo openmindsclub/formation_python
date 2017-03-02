@@ -1042,9 +1042,9 @@ heureux = True
 # Si la variable heureux est vrai, alors on entre dans le if,
 # Sinon on entre dans le else.
 if heureux :
-    print("Ah, je vois que t'es heureux aujourd'hui")
+    print("Je suis heureux aujourd'hui :D")
 else :
-    print("Mais pourquoi t'es triste ??")
+    print("Que personne ne croise mon regard")
             \end{lstlisting}
         
             \notebox{Les opérateurs logiques sont applicable sur les booléens. Exemple :}
@@ -1231,7 +1231,7 @@ for i in range(0, 10, 2) :
             \begin{itemize}
                 \item Créez un projet nommé `exercice 5' et créez un fichier dedans nommé `main.py'.
                 \item Demandez à l'utilisateur d'entrer un nombre, et affichez lui tous les diviseurs de ce nombre. 
-                    Exemple : S'il entre \code{10}, vous lui affichez \code{1}, \code{2}, \code{5}, \code{10}.
+                    Exemple : Si l'utilisateur entre \code{10}, vous lui affichez \code{1}, \code{2}, \code{5}, \code{10}.
             \end{itemize}
 
 \clearpage
@@ -1385,30 +1385,6 @@ a, b = division_euclidienne(20, 3)
 # Ceci nous affichera : 6 2
 print(a, b)
             \end{lstlisting}
-%             \begin{lstlisting}[style=code]
-% # Instructions ici
-
-% nom_de_la_fonction(valeur1, valeur2, ...)
-                
-% # Instructions ici
-%             \end{lstlisting}
-
-%             Détaillons un peu de quoi il est composé ce schéma :
-%             \begin{itemize}
-%                 \item \code{parametre1}, \code{parametre2} sont des variables qu'on donne 
-%             \end{itemize}
-
-            % En faite, vous avez déjà utilisé plusieurs fonctions déjà disponible en python. Ces fonctions sont :
-            % \code{print()}, \code{input()}, \code{int()}. Dans ces fonctions, il y a bien des instructions qui
-            % permettent à ces fonctions de réaliser une tâche bien précise. La tâche de \code{print()} est d'afficher 
-            % un message à l'écran, la tâche de \code{input()} est de récupérer la saisie de l'utilisateur \ldots
-        
-%             Donc quelques parts dans votre système, il y a un fichier ou la fonction \code{print()} est crée comme 
-%             ça :
-%             \begin{lstlisting}
-% def print(paramatres) :
-%     # Les instructions d'affichage.
-%             \end{lstlisting}
 
         \subsubsection{Pourquoi découper notre programme ??}
         C'est vrai que les exemples que nous avons donnée jusque là ne semblent pas vraiment utiles. Mais sachez que
@@ -1441,12 +1417,212 @@ print(a, b)
 
 \clearpage
 
-%     \subsection{Les modules}
-%     \subsection{TP}
+    \subsection{Les modules}
+        Un module est un ensemble de fonctions crée déjà (par les créateurs de python ou par d'autres programmeurs). 
+        Ces fonctions sont regroupés ensemble, 
+        et ils ont le même thème. Par exemple, on peut trouver les fonctions mathématiques (cosinus, sinus, 
+        racine \ldots) dans le module \code{math}. 
+
+        Pour utiliser les fonctions mathématiques, il faut commencer par importer le module \code{math}. Pour cela, 
+        il suffit tout simplement d'utiliser le mot clé \code{import} :
+
+        \begin{lstlisting}[style=code]
+import math
+        \end{lstlisting}
+
+        Maintenant que le module \code{math} est importé, on peut utilisé les fonctions qui se trouvent à l'intérieur 
+        comme ça :
+        \begin{lstlisting}[style=code]
+math.nom_de_fonction()
+        \end{lstlisting}
+
+        Par exemple, pour utilisé la fonction qui calcule la racine d'un nombre, on l'appel comme ça :
+        \begin{lstlisting}[style=code, breaklines=false]
+# La variable 'a' contiendra la valeur 3 après cette instructions
+a = math.sqrt(9) 
+        \end{lstlisting}
+
+        Voici le code complet de notre programme :
+        \begin{lstlisting}[style=code]
+import math
+
+a = math.sqrt(9)
+print(a)
+        \end{lstlisting}
+
+        \notebox{Par convention, tous les modules utilisés doivent être importés au début du programme.}
+
+        Le module \code{math} ne contient pas uniquement les fonctions mathématiques, mais il contient aussi
+        des variables qui ont une relation avec les maths (comme la variable \code{pi}, et \code{e}) :
+
+        \begin{lstlisting}[style=code]
+print("pi =", math.pi)
+print("e  =", math.e)
+        \end{lstlisting}
+
+        \subsubsection{Voir toutes les fonctions d'un module}
+            Pour voir les fonctions d'un module, il suffit juste de taper le nom du module dans pycharm, puis taper un 
+            point, pycharm ensuite vous affichera dans une liste tous les fonctions de ce module 
+            (\autoref{function_list}) .
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/18_modules.png}
+                \caption{La liste des fonctions du module math}
+                \label{function_list}
+            \end{figure}
+
+            Vous pouvez parcourir cette liste avec les touches \code{bas} et \code{haut} pour voir toutes les fonctions
+            contenu par ce module.
+
+        \subsubsection{Le module random}
+            Parmi les modules de python, on trouve le module \code{random}. Ce module nous permet de générer des
+            nombres aléatoires. 
+
+            La fonction la plus intéressante de ce module est la fonction \code{randint()}. Cette fonction reçoit en
+            paramètre deux entiers, et renvoie un nombre aléatoire entre ces deux entier. Voici un exemple 
+            d'utilisation :
+            \begin{lstlisting}[style=code, breaklines=false]
+import random
+
+# la variable 'a' aura une valeur aléatoire compris entre
+# 0 (inclut) et 100 (inclut)
+a = random.randint(0, 100)
+
+# la variable 'b' aura une valeur aléatoire compris entre
+# -50 (inclut) et 300 (inclut)
+b = random.randint(-50, 300)
+
+print(a, b)
+            \end{lstlisting}
+
+            Vous pouvez vous amusez a re-exécuter ce code, et vous verrai qu'à chaque fois, les variables \code{a} et 
+            \code{b} prennent des valeurs différentes.
+
+        \subsubsection{Quelles sont les modules disponibles ??}
+            Python contient par défaut des centaines de modules, et comme c'est un langage très populaire et 
+            \emph{open source}, beaucoup de développeurs crée des modules très utiles et les partages avec la communauté.
+
+            Parmi les modules crée par les développeurs, on trouve :
+            \begin{itemize}
+                \item Des modules pour d’interagir avec les bases de données, 
+                \item des modules pour faire de la programmation graphique, 
+                \item des modules pour afficher des barres de progressions, 
+                \item des modules pour manipuler les documents xml,
+                \item \dots\ etc
+            \end{itemize}
+
+            On verra dans la fin de cette formation comment installer de nouveaux modules.
+
+        \subsubsection{Exercice 7}
+            Voici l'énoncé de l'exercice :
+            \begin{itemize}
+                \item Créez un projet nommé `exercice 7' et créez un fichier dedans nommé `main.py'.
+                \item Chercher la fonction qui fait le factoriel dans le module \code{math}, et utiliser cette fonction
+                    pour calculer le factoriel de \code{1000}.
+            \end{itemize}
+    \subsection{TP}
+        Nous allons faire un TP qui regroupera tous les concepts que nous avons vu jusque là. Nous allons crée un 
+        mini jeu. 
+
+        Notre jeu va générer un nombre aléatoire, puis il va demander à l'utilisateur de trouver ce nombre. À chaque
+        fois que l'utilisateur essaye de trouver ce nombre aléatoire, notre programme doit l'informer si c'est juste 
+        ou pas ; si ce n'est pas juste, notre programme doit dire à l'utilisateur si le nombre aléatoire est supérieur 
+        où inférieur au nombre donner par l'utilisateur. 
+
+        Voici un exemple du déroulement de notre programme :
+        \begin{lstlisting}[style=exec_result]
+J'ai générer un nombre aléatoire entre 0 et 100.
+Trouve le nombre : 45
+C'est plus
+Trouve le nombre : 90
+C'est moins
+Trouve le nombre : 70
+C'est moins
+Trouve le nombre : 67
+Bravo, vous avez trouvez le nombre que j'ai générer.
+        \end{lstlisting}
+
+        \subsubsection{La solution}
+
+        \begin{lstlisting}[style=code, breaklines=false]
+import random
+
+nombre_aleatoire = random.randint(0, 100)
+nombre_utilisateur = -1
+
+print("J'ai générer un nombre aléatoire entre 0 et 100")
+
+while nombre_utilisateur != nombre_aleatoire:
+    nombre_utilisateur = input("Trouve le nombre : ")
+    nombre_utilisateur = int(nombre_utilisateur)
+    if nombre_aleatoire > nombre_utilisateur:
+        print("C'est plus")
+    elif nombre_aleatoire < nombre_utilisateur:
+        print("C'est moins")
+    elif nombre_aleatoire == nombre_utilisateur:
+        print("Bravo, vous avez trouvez le nombre que j'ai générer.")
+        \end{lstlisting}
+
+        \subsubsection{Extension du programme}
+            Maintenant que votre jeu est fonctionnel, mettez les instructions de votre programmes dans une fonction appelé 
+            \code{jouer}, et débrouiller vous pour que le jeux se répète si l'utilisateur a en vie de répéter.
+
+            Voici un exemple du déroulement :
+            \begin{lstlisting}[style=exec_result]
+J'ai générer un nombre aléatoire entre 0 et 100.
+Trouve le nombre : 45
+C'est plus
+Trouve le nombre : 90
+C'est moins
+Trouve le nombre : 70
+C'est moins
+Trouve le nombre : 67
+Bravo, vous avez trouvez le nombre que j'ai générer.
+
+Est-ce que vous voulez rejouer (o/n) : o
+
+J'ai générer un nombre aléatoire entre 0 et 100.
+Trouve le nombre : 55
+C'est moins
+.
+.
+.
+        \end{lstlisting}        
+
+        \subsubsection{La solution}
+        \begin{lstlisting}[style=code, breaklines=false]
+import random
+
+
+def jouer():
+
+    nombre_aleatoire = random.randint(0, 100)
+    nombre_utilisateur = -1
+
+    print("J'ai générer un nombre aléatoire entre 0 et 100")
+
+    while nombre_utilisateur != nombre_aleatoire:
+        nombre_utilisateur = input("Trouve le nombre : ")
+        nombre_utilisateur = int(nombre_utilisateur)
+        if nombre_aleatoire > nombre_utilisateur:
+            print("C'est plus")
+        elif nombre_aleatoire < nombre_utilisateur:
+            print("C'est moins")
+        elif nombre_aleatoire == nombre_utilisateur:
+            print("Bravo, vous avez trouvez le nombre que j'ai générer.")
+
+
+# C'est à cette instruction que commence notre programme.
+rejouer = ""
+while rejouer != "n":
+    jouer()
+    rejouer = input("Est-ce que vous voulez rejouer (o/n)") 
+        \end{lstlisting}
 %     \subsection{Le help}
 %         Obtenir le help depuis la console.
 
-% \section{La programmation orientée objet}
+% \section{Les objets}
 %     \subsection{C'est quoi déjà un objet ?}
 %     \subsection{Les différents types d'objets disponible}
 %         On parlera des string, listes, tuples et des dictionnaires.
@@ -1458,11 +1634,11 @@ print(a, b)
 %     \subsection{Les dictionnaires}
 %     \subsection{TP}
 
-% \section{Les bibliothèques standards}
+% \section{La programmation avancée}
 %     \subsection{Exécutions des commandes systèmes}
 %     \subsection{L'aléatoire}
 %     \subsection{Gestion des mots de passes}
-%     \subsection{Le réseau}
+%     \subsection{Installer des modules python}
 
 % \section{Allez plus loin}
 %     Des tutos pour la programmation graphique avec PyQt. Le tuto d'openclassrooms.
