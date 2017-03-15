@@ -1305,7 +1305,7 @@ print(x)
             programme principale.
             }
 
-        \subsubsection{Plusieurs paramètres}
+        \subsubsection{Fonction avec plusieurs paramètres}
             On peut utiliser plusieurs variables entre les parenthèses de la fonction, et pas seulement une comme
             on a fait dans l'exemple précédent.  Par exemple, on a ici une fonction qui calcule la somme 
             de deux nombres :
@@ -1354,12 +1354,12 @@ presentation("Yanis", "Khelloufi", 22)
             \end{lstlisting}
 
         \subsubsection{Fonction qui renvoie plusieurs valeurs}
-            On peut aussi crée une fonction que renvoie plusieurs valeurs. Voici un exemple d'une fonction qui fait
+            On peut aussi crée une fonction qui renvoie plusieurs valeurs. Voici un exemple d'une fonction qui fait
             la division euclidienne, et renvoie le résultat de la division et le reste de la division :
             \begin{lstlisting}[style=code]
 def division_euclidienne(divisee, diviseur) :
     resultat_de_division = divisee // diviseur
-    reste_de_division = divisee \% diviseur
+    reste_de_division = divisee % diviseur
 
     return resultat_de_division, reste_de_division
             \end{lstlisting}
@@ -1375,7 +1375,7 @@ a, b = division_euclidienne(20, 3)
             \begin{lstlisting}[style=code]
 def division_euclidienne(divisee, diviseur) :
     resultat_de_division = divisee // diviseur
-    reste_de_division = divisee \% diviseur
+    reste_de_division = divisee % diviseur
 
     return resultat_de_division, reste_de_division
 
@@ -1414,6 +1414,34 @@ print(a, b)
                 \item Dans votre programme principale, demander un nombre de l'utilisateur, et dite lui si ce nombre
                     est premier ou pas.
             \end{itemize}
+
+        \subsubsection{Solution}
+            Voici la solution de l'exercice :
+            \begin{lstlisting}[style=code]
+# On crée notre fonction
+def premier(nombre):
+    for i in range(2, nombre):
+        if nombre % i == 0:
+            return False
+
+    return True
+
+
+
+n = input("Entrez un nombre svp : ")
+n = int(n)
+
+# On utilise notre fonction pour savoir si 'n' est 
+# premier ou pas. 
+prem = premier(n)
+
+# La variable 'prem' contiendra 'True' si 
+# le nombre n est premier.
+if prem:
+    print("Le nombre", n, "est premier")
+else:
+    print("Le nombre", n, "n'est pas premier") 
+            \end{lstlisting}
 
 \clearpage
 
