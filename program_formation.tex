@@ -1647,9 +1647,100 @@ while rejouer != "n":
     jouer()
     rejouer = input("Est-ce que vous voulez rejouer (o/n)") 
         \end{lstlisting}
-%     \subsection{Le help}
-%         Obtenir le help depuis la console.
+    \subsection{Le help}
+        Nous allons voir dans cette partie, comment faire pour obtenir de l'aide sur le fonctionnement d'une fonction
+        ou d'un module.
 
+        Disons par exemple que vous avez entendu parler que la fonction \code{print()} est utilisé pour l'affichage,
+        mais le problème c'est que vous ne savez pas ce qu'elle fait exactement, ni comment l'utiliser. C'est là où 
+        le \code{help()} vient au secours.
+
+        Le \code{help()} (qui signifie aide) est une fonction de python qui vous permet d'obtenir l'aide sur une 
+        fonction ou un module. On lui donne en paramètre le nom de la fonction où le module, et elle nous affiche
+        qu'est-ce que fait ce dernier et comment l'utiliser.
+
+        Continuons dans l'exemple de la fonction \code{print()}, écrivez et exécuter ce code dans PyCharm :
+        \begin{lstlisting}[style=code]
+help(print)
+        \end{lstlisting}
+
+        Ce qui vous affichera :
+        \begin{lstlisting}[style=exec_result]
+Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+    
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+        \end{lstlisting}
+
+        On voit que la fonction \code{print()} peut être utilisé avec beaucoup d'option. Nous allons pas voir comment 
+        elle fonctionne exactement aujourd'hui, car on a pas assez d'information. Mais nous allons le voir plus tard si
+        on aura le temps de terminer la formation.
+
+        Continuons avec un autre exemple. Disons qu'on veut comprendre le module \code{math}, il suffit aussi d'appeler
+        le \code{help()} comme on a fait avec la fonction \code{print()} :
+        \begin{lstlisting}[style=code]
+import math
+
+help(math) 
+        \end{lstlisting}
+
+        Voici une partie du résultat qui apparaît :
+        \begin{lstlisting}[style=exec_result]
+Help on built-in module math:
+
+NAME
+    math
+
+DESCRIPTION
+    This module is always available.  It provides access to the
+    mathematical functions defined by the C standard.
+
+FUNCTIONS
+    acos(...)
+        acos(x)
+        
+        Return the arc cosine (measured in radians) of x.
+    
+    acosh(...)
+        acosh(x)
+        
+        Return the inverse hyperbolic cosine of x.
+        \end{lstlisting}
+
+        L'affichage est généralement divisé en 3 parties. La première partie est \code{NAME} qui est le nom du module ;
+        la deuxième est \code{DESCRIPTION} qui est une bref description du contenu du module ; et la troisième partie
+        est \code{FUNCTIONS} qui est l'ensemble de fonction contenu dans ce module. Vous remarquez aussi que 
+        chaque fonction est expliqué.
+
+        Maintenant, supposons qu'on veut seulement connaître ce que fait la fonction \code{acos()}, et non pas tout 
+        le module math, comment fait on ?? Il suffit juste d'appeler le \code{help()} sur la fonction \code{acos()}
+        seulement :
+        \begin{lstlisting}[style=code]
+import math
+
+help(math.acos) 
+        \end{lstlisting}
+
+        Ce qui nous affichera seulement l'aide de la fonction \code{acos()} du module \code{math} :
+        \begin{lstlisting}[style=exec_result]
+Help on built-in function acos in module math:
+
+acos(...)
+    acos(x)
+    
+    Return the arc cosine (measured in radians) of x.
+        \end{lstlisting}
+
+        Le \code{help()} est une fonctionnalité très importante, et elle vous sera très utile quand vous programmez.
+
+        
 % \section{Les objets}
 %     \subsection{C'est quoi déjà un objet ?}
 %     \subsection{Les différents types d'objets disponible}
