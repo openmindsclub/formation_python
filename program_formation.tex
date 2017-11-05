@@ -135,7 +135,7 @@ framerule=2pt,
 
             Alors, un programme est un ensemble d'instructions exécuté par l'ordinateur pour qu'il puisse (l'ordinateur)
             accomplir une tâche bien précise. On a pour exemple des programmes : les navigateurs web
-            (comme chromium, chrome, firefox), qui permettent de visiter les cites et de chatter en ligne ;
+            (comme chromium, chrome, firefox), qui permettent de visiter les sites et de chatter en ligne ;
             on a aussi les jeux vidéos, les logiciels de retouches de photos \ldots\ etc
 
             \begin{figure}[H]
@@ -206,12 +206,6 @@ framerule=2pt,
             }
 
         \subsubsection{Les langages de programmation les plus connus}
-            \begin{description}
-                \item[C++ :] La formation est faite par \textsc{Yasser}.
-                \item[Java :] La formation est faite par \textsc{Wissam} et \textsc{Sofiane}.
-                \item[Python :] C'est la formation à laquelle vous assistez maintenant.
-            \end{description}
-
         \begin{figure}[H]
             \centering
             \begin{subfigure}[b]{0.32\textwidth}
@@ -260,7 +254,7 @@ framerule=2pt,
             \begin{itemize}
                 \item Python est facile à apprendre et son code est facile à lire.
                 \item Il est multiplate-forme, il marche sous Linux, Windows, et Mac OS.
-                \item C'est un langage orienté objet (on en parlera de ça dans le prochaines séances).
+                \item C'est un langage orienté objet (on en parlera de ça dans les prochaines séances).
                 \item Il a une bibliothèque tierce qui permet de faire de la programmation web d'une manière très flexible.
                     Cette bibliothèque c'est \emph{Django}.
                 \item Il permet de développer très rapidement en utilisant peu de code, et de crée des applications
@@ -285,7 +279,7 @@ framerule=2pt,
         \begin{enumerate}
             \item Soit on écrit nos instructions dans un fichier texte, et puis on appel l'interpréteur python pour
                 qu'il exécute nos instructions et nous affiche le résultat. Cette méthode comporte de nombreux
-                avantages, et elle très flexible, mais elle est compliqué (surtout pour les débutants). Donc nous
+                avantages, et elle est très flexible, mais elle est compliqué (surtout pour les débutants). Donc nous
                 allons optez pour la deuxième méthode dans cette formation.
             \item Cette méthode consiste à utiliser un programme appelé \emph{IDE} (Integrated Development Environment),
                 ou \emph{EDI} en français (Environnement de Développement Intégré). Ce programme contient tous ce dont
@@ -319,13 +313,22 @@ framerule=2pt,
             Python est installé par défaut dans toute les distributions Linux. Par contre, l'IDE PyCharm il
             faut l'installer. Pour cela, il suffit d'ouvrir un terminal (Ctrl+alt+t) et exécuter ces commandes :
             \begin{lstlisting}[language=bash, style=code, numbers=none]
-sudo add-apt-repository ppa:mystic-mirage/pycharm
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make -y
 sudo apt-get update
-sudo apt-get install pycharm-community
+sudo apt-get install ubuntu-make -y
+umake ide pycharm
             \end{lstlisting}
 
+            Il vous demandera après de choisir un emplacement pour l'installation, tapez juste entrer sans rien changer.
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\linewidth]{img/8_1_installer_pycharm.png}
+                \caption{Installation PyCharm}
+            \end{figure}
+
             Et voila, PyCharm est installé sur votre machine. Il suffit juste de le lancer en appuyant le bouton
-            windows (\autoref{button_windows}) et écrire \code{pycharm} (\autoref{launch_pycharm}) puis tapez entrer.
+            windows (\autoref{button_windows}) et tapez \code{pycharm} (\autoref{launch_pycharm}) puis tapez entrer.
 
             \begin{figure}[H]
                 \centering
