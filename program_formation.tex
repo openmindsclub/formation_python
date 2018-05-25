@@ -1065,6 +1065,14 @@ if heureux and beau_jour :
                 \item Créer un projet nommé le `exercice 4' et créer un fichier `main.py' dedans.
                 \item Demandez un nombre de l'utilisateur, et dites lui si ce nombre est paire ou impaire.
             \end{itemize}
+        \subsubsection{Exercice 4.1}
+            Voici l'énoncé de l'exercice :
+            \begin{itemize}
+                \item Créen un projet nommée le `exercice 4.1' et créer un fichier `main.py' dedans.
+                \item Demandez de l'utilisateur son nom et son mot de passe, et dite d'entrer si le mot de passe est
+                    juste. S'il a tort, alors dite le est-ce que l'erreur est dans le nom d'utilisateur ou le mot
+                    de passe.
+            \end{itemize}
 
 \clearpage
 
@@ -1802,7 +1810,7 @@ print(nombres)
             \begin{lstlisting}[style=code]
 liste_heterogene = ["je suis une phrase", 13, 25, "salut", 22.5]
 
-print(nombres)
+print(liste_heterogene)
             \end{lstlisting}
         \subsubsection{Accéder à un élément de la liste}
             Nous avons vu comment crée une liste et comment l'afficher en entière.
@@ -2046,6 +2054,207 @@ print(une_autre_phrase)
                 \code{"fromage-gâteau-tarte-pizza"}.
 
         \subsection{Les dictionnaires}
+        Avant d'expliquer c'est quoi un dictionnaire, nous allons imaginer un programme que nous
+        voulons crée. 
+
+        Disons que nous voulons crée un programme ou nous allons stocker 
+        les étudiants d'une classe, avec chacun sa moyenne, et on veut que ce programme soit capable
+        d'ajouter de nouveaux étudiants, et de nous montrer la moyenne d'un étudiant si on veut. 
+        Comment on va faire ? C'est dans ce genre de situation que les dictionnaires sont très
+        utiles.
+
+        Voici comment créer un dictionnaire avec python.
+            \begin{lstlisting}[style=code]
+# Un dictionnaire vide
+moyenne = {}
+
+# Un dictionnaire initialisé
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17}
+            \end{lstlisting}       
+
+        \questionbox{C'est quoi un dictionnaire ?}
+
+        Les dictionnaires sont des objets qui contiennent d'autres objets (comme les listes), mais 
+        la différence avec les listes, c'est que l'accès aux éléments du dictionnaires se fait par clé,
+        et non par indice.
+
+        Revenons au dictionnaire \code{moyenne} que nous venons de crée. Pour accéder à la moyenne 
+        de Khaled, il suffit de faire ça:
+            \begin{lstlisting}[style=code]
+# Création du dictionnaire
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17}
+
+# Ceci nous affichera 12
+print(moyenne["Khaled"])
+            \end{lstlisting}       
+
+            Dans l'exemple précédent, nous avons directement affiché la moyenne de Khaled, mais on
+            aurait pu la stocker dans une variable, et faire ce qu'on veut avec.
+            \begin{lstlisting}[style=code]
+moyenne_khaled = moyenne["Khaled"]
+
+# Ceci nous affichera 12
+print(moyenne_khaled)
+            \end{lstlisting}       
+
+            Pour afficher un dictionnaire en entier, il suffit juste de passer le dictionnaire à
+            \code{print} :
+             \begin{lstlisting}[style=code]
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17}
+
+# On affiche notre dictionnaire
+print(moyenne)
+            \end{lstlisting}           
+
+        \subsubsection{Modifier la valeur d'un élément du dictionnaire}    
+        Disons que nous avons fait une erreur en calculant la moyenne de Khaled, pour modifier 
+        sa moyenne après la création du dictionnaire, il suffit de faire ça :
+            \begin{lstlisting}[style=code]
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17}
+
+# On modifie la moyenne de Khaled
+moyenne["Khaled"] = 13
+
+# Ceci nous affichera 13
+print(moyenne["Khaled"])
+            \end{lstlisting}       
+
+        \subsubsection{Ajouter un élément au dictionnaire}
+            Disons maintenant que nous avons calculer la moyenne d'un autre étudiant, et on veut
+            l'ajouter à notre dictionnaire de moyenne, il suffit de faire ça pour ajouter ce nouveau
+            étudiant avec sa moyenne :
+            \begin{lstlisting}[style=code]
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17}
+
+# On ajoute un nouveau étudiant à notre dictionnaire.
+moyenne["Imene"] = 15
+
+# On affiche notre dictionnaire
+print(moyenne)
+            \end{lstlisting}
+
+        \subsubsection{Supprimer un élément du dictionnaire}
+            Maintenant imaginons qu'on veut supprimer l'un des étudiants de notre dictionnaire, il 
+            suffit de faire ça:
+            \begin{lstlisting}[style=code]
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17, "Imene": 15}
+
+# On supprime un élément de notre dictionnaire.
+del moyenne["Mustapha"]
+
+# On affiche notre dictionnaire
+print(moyenne)
+            \end{lstlisting}
+
+        \subsubsection{Parcourir un dictionnaire}
+            Pour parcourir tous les éléments d'un dictionnaire, on utilise la boucle \code{for} :
+            \begin{lstlisting}[style=code]
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17, "Imene": 15}
+
+for key in moyenne:
+    print(key, "===>", moyenne[key])
+            \end{lstlisting}
+
+            À chaque itération de la boucle, \code{key} prend une clé du dictionnaire, et on 
+            utilise cette clé pour afficher la valeur correspondante.
+
+        \subsubsection{Vérifier si une clé existe dans le dictionnaire}
+            Disons qu'à un certain moment on veut vérifier si on a déjà ajouter l'étudiant Ahmed
+            à notre dictionnaire, il suffit d'utiliser le mot clé \code{in} dans une condition :
+            \begin{lstlisting}[style=code] 
+moyenne = {"Khaled": 12, "Ahmed": 10, "Mustapha": 17, "Imene": 15}
+
+if "Ahmed" in moyenne:
+    print("Ahmed existe")
+else:
+    print("Ahmed n'existe pas")
+            \end{lstlisting}
+        \subsubsection{Exercice 11}
+        Réaliser les tâches suivantes dans un programme.
+        \begin{itemize}
+            \item Crée un dictionnaire de joueurs et de leurs score. Le dictionnaire contient :
+            \begin{itemize}
+                \item Mohamed, score 500
+                \item Ahmed, score 20
+                \item Fawzi, score 0
+            \end{itemize}
+
+            \item Ajouter un autre joueur nommé Hamid avec le score 100.
+
+            \item Supprimer le joueur Fawzi du dictionnaire.
+
+            \item Parcourir le dictionnaire et afficher les scores de tous les joueurs.
+        \end{itemize}
+
+
+    \subsection{Les fichiers}
+        \questionbox{Pourquoi utiliser les fichiers ?}
+
+        Imaginons que nous voulons crée un jeu vidéos, et dans ce jeu, on veut sauvegarder le score
+        des meilleurs joueurs. Avec les variables c'est impossible, car dés que notre programme s'arrête,
+        tous les variables disparaissent.
+
+        Mais avec les fichiers, c'est différent ; car le contenu des fichiers reste même après l'arrêt 
+        du programme.
+
+        \subsubsection{Ouvrir un fichier}
+        Avant de pouvoir lire ou écrire dans un fichier, il faut d'abord l'ouvrir en utilisant 
+        la fonction \code{open}. Voici comment on utilise cette fonction :
+        \begin{lstlisting}[style=code]
+fichier = open("chemin du fichier à ouvrir", "mode d'ouverture du fichier")
+        \end{lstlisting}
+
+        La fonction \code{open} reçoit deux paramètres: 
+        \begin{itemize}
+            \item Le premier paramètre c'est le chemin du fichier à ouvrir. On peut la donner soit 
+            un chemin absolu (Exemple : \code{C:/dossier1/dossier2/fichier.txt}) soit un chemin relative
+            (relative par rapport d'où se trouve le programme).
+            \item Le deuxième paramètre c'est le mode d'ouverture du fichier (lecture, écriture,
+            ajout à la fin \dots).
+        \end{itemize}
+
+        La fonction \code{open} renvoi un objet qui nous permet de manipuler le fichier ouvert.
+
+        \subsubsection{Lire un fichier}
+        Nous allons voir ici comment lire le contenu d'un fichier. Commencer par crée un fichier 
+        nommée \code{test.txt} dans le même dossier que votre programme. Mettez dans ce fichier :
+        \begin{lstlisting}[style=exec_result]
+Ceci est un fichier texte.
+On teste la lecture depuis un fichier avec python.
+        \end{lstlisting}
+
+        Nous allons maintenant ouvrir ce fichier et le lire avec python:
+        \begin{lstlisting}[style=code]
+# Le "r" (read) dans le deuxième paramètre indique à la fonction open qu'on 
+# veut ouvrir le fichier en lecture.
+fichier = open("test.txt", "r")
+
+# Ceci nous permet de lire tous le contenu du fichier et le stocker dans texte.
+texte = fichier.read()
+
+# On manipule le contenu du fichier comme on veut.
+print(texte)
+
+# Il faut fermer le fichier après avoir fini avec.
+fichier.close()
+        \end{lstlisting}
+
+        \code{read()} permet de lire tous le fichier comme un texte. Si par contre vous voulez
+        récupérer le contenu dans une liste, et dont chaque élément de la liste représente une ligne,
+        il faut utiliser \code{readlines()}:
+        \begin{lstlisting}[style=code]
+fichier = open("test.txt", "r")
+
+# Ceci nous permet de lire tous le contenu du fichier et le stocker dans texte.
+lignes = fichier.readlines()
+
+# On manipule le contenu du fichier comme on veut.
+print(lignes)
+
+# Il faut fermer le fichier après avoir fini avec.
+fichier.close()
+        \end{lstlisting}
+
 %     \subsection{Les différents types d'objets disponible}
 %         On parlera des string, listes, tuples et des dictionnaires.
 %     \subsection{Les opérations sur les fichiers}
